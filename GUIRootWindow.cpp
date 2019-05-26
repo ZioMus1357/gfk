@@ -1,5 +1,5 @@
 #include "GUIRootWindow.h"
-
+#include <wx/dcclient.h>
 GUIRootWindow::GUIRootWindow( wxWindow* parent )
 :
 RootWindow( parent )
@@ -7,6 +7,14 @@ RootWindow( parent )
 	KolorPunktow->SetLabel(_(L"Kolor Punkt\u00F3w"));
 	WielkoscPunktow->SetLabel(_(L"Wielko\u015B\u0107 Punkt\u00F3w"));
 	SlupkiBledow->SetLabel(_(L"S\u0142upki B\u0142\u0119d\u00F3w"));
+}
+
+void GUIRootWindow::Draw( wxUpdateUIEvent& event )
+{
+	wxClientDC dc(PanelWykresu);
+	int w, h;
+	PanelWykresu->GetSize(&w, &h);
+	dc.DrawText("Tu trzeba narysowac wykres", wxPoint(w - 500, h - 250));
 }
 
 void GUIRootWindow::WczytajZPliku( wxCommandEvent& event )
@@ -48,12 +56,15 @@ void GUIRootWindow::ZmienWilekoscPunktow( wxCommandEvent& event )
 void GUIRootWindow::WyswietlSlupkiBledow( wxCommandEvent& event )
 {
 // TODO: Implement WyswietlSlupkiBledow
+
+
 }
 
 void GUIRootWindow::ZmienTypRegresji( wxCommandEvent& event )
 {
 // TODO: Implement ZmienTypRegresji
 }
+
 
 
 
