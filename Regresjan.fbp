@@ -54,7 +54,8 @@
             <property name="window_name"></property>
             <property name="window_style">wxTAB_TRAVERSAL</property>
             <property name="xrc_skip_sizer">1</property>
-            <event name="OnUpdateUI">Draw</event>
+            <event name="OnPaint">Draw</event>
+            <event name="OnUpdateUI">ReDraw</event>
             <object class="wxMenuBar" expanded="1">
                 <property name="bg"></property>
                 <property name="context_help"></property>

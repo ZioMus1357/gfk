@@ -1,5 +1,11 @@
 #include "GUIRootWindow.h"
-#include <wx/dcclient.h>
+#include <wx/filedlg.h>
+#include<wx/dcclient.h>
+#include<wx/dcbuffer.h>
+
+
+
+
 GUIRootWindow::GUIRootWindow( wxWindow* parent )
 :
 RootWindow( parent )
@@ -9,12 +15,24 @@ RootWindow( parent )
 	SlupkiBledow->SetLabel(_(L"S\u0142upki B\u0142\u0119d\u00F3w"));
 }
 
-void GUIRootWindow::Draw( wxUpdateUIEvent& event )
+void GUIRootWindow::Draw( wxPaintEvent& event )
 {
-	wxClientDC dc(PanelWykresu);
+	wxClientDC __MyDC(PanelWykresu);
+	m_buffer = wxBitmap(PanelWykresu->GetSize().x, PanelWykresu->GetSize().y);
+	wxBufferedDC MyDC(&__MyDC, m_buffer);
+
+	MyDC.SetBackground(*wxWHITE_BRUSH);
+	MyDC.Clear();
+
 	int w, h;
 	PanelWykresu->GetSize(&w, &h);
-	dc.DrawText("Tu trzeba narysowac wykres", wxPoint(w - 500, h - 250));
+	MyDC.DrawText("Tu trzeba narysowac wykres", wxPoint(w/2, h/2));
+		
+}
+
+void GUIRootWindow::ReDraw( wxUpdateUIEvent& event )
+{
+// TODO: Implement ReDraw
 }
 
 void GUIRootWindow::WczytajZPliku( wxCommandEvent& event )
@@ -30,6 +48,13 @@ void GUIRootWindow::WczytajZKlawiatury( wxCommandEvent& event )
 void GUIRootWindow::Zapisz( wxCommandEvent& event )
 {
 
+wxFileDialog saveFileDialog(this, "Choose a file", "", "","JPG files (*.jpg)|*.jpg|PNG files (*.png)|*.png", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
+if (saveFileDialog.ShowModal() == wxID_CANCEL)
+return;
+m_image = m_buffer.ConvertToImage();
+m_image.AddHandler(new wxJPEGHandler);
+m_image.AddHandler(new wxPNGHandler);
+m_image.SaveFile(saveFileDialog.GetPath());
 
 }
 
@@ -64,6 +89,8 @@ void GUIRootWindow::ZmienTypRegresji( wxCommandEvent& event )
 {
 // TODO: Implement ZmienTypRegresji
 }
+
+
 
 
 

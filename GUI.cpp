@@ -101,7 +101,8 @@ RootWindow::RootWindow( wxWindow* parent, wxWindowID id, const wxString& title, 
 	this->Centre( wxBOTH );
 
 	// Connect Events
-	this->Connect( wxEVT_UPDATE_UI, wxUpdateUIEventHandler( RootWindow::Draw ) );
+	this->Connect( wxEVT_PAINT, wxPaintEventHandler( RootWindow::Draw ) );
+	this->Connect( wxEVT_UPDATE_UI, wxUpdateUIEventHandler( RootWindow::ReDraw ) );
 	WczytywanieMenu->Bind(wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( RootWindow::WczytajZPliku ), this, ZPliku->GetId());
 	WczytywanieMenu->Bind(wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( RootWindow::WczytajZKlawiatury ), this, ZKlawiatury->GetId());
 	Menu->Bind(wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( RootWindow::Zapisz ), this, Zapis->GetId());
@@ -124,7 +125,8 @@ RootWindow::RootWindow( wxWindow* parent, wxWindowID id, const wxString& title, 
 RootWindow::~RootWindow()
 {
 	// Disconnect Events
-	this->Disconnect( wxEVT_UPDATE_UI, wxUpdateUIEventHandler( RootWindow::Draw ) );
+	this->Disconnect( wxEVT_PAINT, wxPaintEventHandler( RootWindow::Draw ) );
+	this->Disconnect( wxEVT_UPDATE_UI, wxUpdateUIEventHandler( RootWindow::ReDraw ) );
 	KolorWykresu->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( RootWindow::WybierzKolorWykresu ), NULL, this );
 	KolorPunktow->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( RootWindow::WybierzKolorPunktow ), NULL, this );
 	SliderSkali->Disconnect( wxEVT_SCROLL_TOP, wxScrollEventHandler( RootWindow::ZmienSkale ), NULL, this );

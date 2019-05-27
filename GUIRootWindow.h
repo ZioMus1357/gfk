@@ -15,7 +15,8 @@ class GUIRootWindow : public RootWindow
 {
 	protected:
 		// Handlers for RootWindow events.
-		void Draw( wxUpdateUIEvent& event );
+		void Draw( wxPaintEvent& event );
+		void ReDraw( wxUpdateUIEvent& event );
 		void WczytajZPliku( wxCommandEvent& event );
 		void WczytajZKlawiatury( wxCommandEvent& event );
 		void Zapisz( wxCommandEvent& event );
@@ -28,7 +29,11 @@ class GUIRootWindow : public RootWindow
 	public:
 		/** Constructor */
 		GUIRootWindow( wxWindow* parent );
+		wxImage             m_image;
+		wxBitmap            m_buffer;
 	//// end generated class members
+
+
 
 
 

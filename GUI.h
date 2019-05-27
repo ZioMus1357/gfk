@@ -54,7 +54,8 @@ class RootWindow : public wxFrame
 		wxComboBox* m_comboBox1;
 
 		// Virtual event handlers, overide them in your derived class
-		virtual void Draw( wxUpdateUIEvent& event ) { event.Skip(); }
+		virtual void Draw( wxPaintEvent& event ) { event.Skip(); }
+		virtual void ReDraw( wxUpdateUIEvent& event ) { event.Skip(); }
 		virtual void WczytajZPliku( wxCommandEvent& event ) { event.Skip(); }
 		virtual void WczytajZKlawiatury( wxCommandEvent& event ) { event.Skip(); }
 		virtual void Zapisz( wxCommandEvent& event ) { event.Skip(); }
