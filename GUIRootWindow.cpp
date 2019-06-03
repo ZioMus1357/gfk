@@ -3,6 +3,7 @@
 #include<wx/dcclient.h>
 #include<wx/dcbuffer.h>
 #include"Wektorek.h"
+#include"Wykres.h"
 
 
 
@@ -23,17 +24,12 @@ void GUIRootWindow::Draw( wxPaintEvent& event )
 
 	MyDC.SetBackground(*wxWHITE_BRUSH);
 	MyDC.Clear();
-
 	int w, h;
 	PanelWykresu->GetSize(&w, &h);
 	wxPoint ZERO(w / 2, h / 2);
-	MyDC.DrawText("Tu trzeba narysowac wykres", wxPoint(w/2, h/2));
-	MyDC.DrawLine(wxPoint(0, h / 2), wxPoint(w, h / 2));
-	MyDC.DrawLine(wxPoint(w / 2, 0), wxPoint(w / 2, h));
-	MyDC.DrawLine(wxPoint(w / 2 - 10, 10 ), wxPoint(w / 2,0));
-	MyDC.DrawLine(wxPoint(w / 2 + 10, 10), wxPoint(w / 2,0));
-	MyDC.DrawLine(wxPoint(w - 10 , h / 2 + 10), wxPoint(w , h / 2));
-	MyDC.DrawLine(wxPoint(w - 10 , h / 2 - 10), wxPoint(w , h / 2));
+	Wykres chart(0,w,0,h);
+	chart.DrawAxies(&MyDC);
+	
 
 		
 }
