@@ -19,19 +19,19 @@ private:
 	Matrix trans;
 
 	//Szerokosc i wysokosc wykresu
-	int w, h;
+	int w_, h_;
 
 public:
-	Wykres(double xmin, double xmax, double ymin, double ymax)
-		:x_min(xmin), x_max(xmax), y_min(ymin), y_max(ymax), a_(0.), b_(0.) {
+	Wykres(double xmin, double xmax, double ymin, double ymax, double w, double h)
+		:x_min(xmin), x_max(xmax), y_min(ymin), y_max(ymax), a_(0.), b_(0.), h_(h), w_(w) {
 		data_ = new double[4];
 		data_[0] = 1.;
 		data_[1] = 1.;
-		data_[2] = 2.;
-		data_[3] = 2.;
+		data_[2] = 120.;
+		data_[3] = 100.;
 	};
-	void DrawPoints(wxDC *dc, int w, int h);  // Rysuje punkty
-	void DrawAxies(wxBufferedDC  *dc); // Rysuje osie
+	void DrawPoints(wxDC *dc);  // Rysuje punkty
+	void DrawAxies(wxDC  *dc); // Rysuje osie
 	void SetTransform(); // Ustawia macierz transormacji,  z kartezjanskiego na ekran i skalowanie
 	wxPoint Transform(double x, double y); // Transformuje punkt zgodnie z macierz¹ transfoirmacji
 

@@ -26,9 +26,9 @@ void GUIRootWindow::Draw( wxPaintEvent& event )
 	MyDC.Clear();
 	int w, h;
 	PanelWykresu->GetSize(&w, &h);
-	wxPoint ZERO(w / 2, h / 2);
-	Wykres chart(0,w,0,h);
+	Wykres chart(0,w,0,h,w,h);
 	chart.DrawAxies(&MyDC);
+	chart.DrawPoints(&MyDC);
 	
 
 		
