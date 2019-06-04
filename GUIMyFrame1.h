@@ -32,6 +32,9 @@ class GUIMyFrame1 : public MyFrame1
 		void ChangePointSize( wxCommandEvent& event );
 		void AddError( wxCommandEvent& event );
 		void ChangeRegresionType( wxCommandEvent& event );
+		void OpenFormFile( wxCommandEvent& event );
+		void OpenFromKeyboard( wxCommandEvent& event );
+		void Save( wxCommandEvent& event );
 	public:
 		/** Constructor */
 		GUIMyFrame1( wxWindow* parent );
@@ -40,6 +43,7 @@ class GUIMyFrame1 : public MyFrame1
   void UpdateControls();
   ~GUIMyFrame1();
   std::shared_ptr<ConfigClass> cfg;
+
 
 
 

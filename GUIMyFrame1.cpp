@@ -1,7 +1,6 @@
 #include "GUIMyFrame1.h"
-#include "ConfigClass.h"
-#include "ChartClass.h"
-
+#include"ChartClass.h"
+#include"ConfigClass.h"
 
 GUIMyFrame1::GUIMyFrame1( wxWindow* parent )
 :
@@ -50,9 +49,23 @@ void GUIMyFrame1::ChangeRegresionType( wxCommandEvent& event )
 // TODO: Implement ChangeRegresionType
 }
 
+void GUIMyFrame1::OpenFormFile( wxCommandEvent& event )
+{
+// TODO: Implement OpenFormFile
+}
+
+void GUIMyFrame1::OpenFromKeyboard( wxCommandEvent& event )
+{
+// TODO: Implement OpenFromKeyboard
+}
+
+void GUIMyFrame1::Save( wxCommandEvent& event )
+{
+// TODO: Implement Save
+}
 
 
-void GUIMyFrame1::UpdateControls()
+GUIMyFrame1::~GUIMyFrame1()
 {
 
 }
@@ -68,7 +81,8 @@ void GUIMyFrame1::Repaint()
  MyChart.Draw(&dc, w, h);
 }
 
-GUIMyFrame1::~GUIMyFrame1()
+
+void GUIMyFrame1::UpdateControls()
 {
 
 }

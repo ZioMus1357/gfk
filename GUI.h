@@ -62,6 +62,9 @@ class MyFrame1 : public wxFrame
 		virtual void ChangePointSize( wxCommandEvent& event ) { event.Skip(); }
 		virtual void AddError( wxCommandEvent& event ) { event.Skip(); }
 		virtual void ChangeRegresionType( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OpenFormFile( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OpenFromKeyboard( wxCommandEvent& event ) { event.Skip(); }
+		virtual void Save( wxCommandEvent& event ) { event.Skip(); }
 
 
 	public:
