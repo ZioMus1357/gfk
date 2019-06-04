@@ -27,11 +27,11 @@ void ChartClass::Draw(wxDC *dc, int w, int h)
 {
 	width = w - 20;
 	height = h - 20;
-	dc->SetBackground(wxBrush(RGB(255, 255, 255)));
+	dc->SetBackground(wxBrush(wxColor(255, 255, 255)));
 	dc->Clear();
-	dc->SetPen(wxPen(RGB(255, 0, 0)));
+	dc->SetPen(wxPen(wxColor(255, 0, 0)));
 	dc->DrawRectangle(10, 10, w - 20, h - 20);
-	dc->SetPen(wxPen(RGB(0, 0, 255)));
+	dc->SetPen(wxPen(wxColor(0, 0, 255)));
 	dc->SetClippingRegion(wxRect(10, 10, width, height));
 	
 	SetTransform();

@@ -61,7 +61,13 @@ void GUIMyFrame1::OpenFromKeyboard( wxCommandEvent& event )
 
 void GUIMyFrame1::Save( wxCommandEvent& event )
 {
-// TODO: Implement Save
+	wxFileDialog saveFileDialog(this, "Choose a file", "", "", "JPG files (*.jpg)|*.jpg|PNG files (*.png)|*.png", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
+	if (saveFileDialog.ShowModal() == wxID_CANCEL)
+		return;
+	m_image = m_buffer.ConvertToImage();
+	m_image.AddHandler(new wxJPEGHandler);
+	m_image.AddHandler(new wxPNGHandler);
+	m_image.SaveFile(saveFileDialog.GetPath());
 }
 
 
@@ -72,13 +78,14 @@ GUIMyFrame1::~GUIMyFrame1()
 
 void GUIMyFrame1::Repaint()
 {
- wxClientDC dc1(WxPanel);
- wxBufferedDC dc(&dc1);
+	wxClientDC __MyDC(WxPanel);
+	m_buffer = wxBitmap(WxPanel->GetSize().x, WxPanel->GetSize().y);
+	wxBufferedDC MyDC(&__MyDC, m_buffer);
 
- ChartClass MyChart(cfg);
- int w, h;
- WxPanel->GetSize(&w, &h);
- MyChart.Draw(&dc, w, h);
+	 ChartClass MyChart(cfg);
+	 int w, h;
+	 WxPanel->GetSize(&w, &h);
+	 MyChart.Draw(&MyDC, w, h);
 }
 
 

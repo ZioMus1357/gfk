@@ -43,6 +43,8 @@ class GUIMyFrame1 : public MyFrame1
   void UpdateControls();
   ~GUIMyFrame1();
   std::shared_ptr<ConfigClass> cfg;
+  wxBitmap m_buffer;
+  wxImage m_image;
 
 
 
