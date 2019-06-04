@@ -9,69 +9,67 @@
 
 #include <wx/artprov.h>
 #include <wx/xrc/xmlres.h>
-#include <wx/string.h>
-#include <wx/bitmap.h>
-#include <wx/image.h>
-#include <wx/icon.h>
-#include <wx/menu.h>
+#include <wx/intl.h>
+#include <wx/panel.h>
 #include <wx/gdicmn.h>
 #include <wx/font.h>
 #include <wx/colour.h>
 #include <wx/settings.h>
-#include <wx/panel.h>
-#include <wx/sizer.h>
+#include <wx/string.h>
+#include <wx/bitmap.h>
+#include <wx/image.h>
+#include <wx/icon.h>
 #include <wx/button.h>
 #include <wx/stattext.h>
 #include <wx/slider.h>
 #include <wx/textctrl.h>
 #include <wx/radiobut.h>
-#include <wx/combobox.h>
+#include <wx/choice.h>
+#include <wx/sizer.h>
+#include <wx/menu.h>
 #include <wx/frame.h>
 
 ///////////////////////////////////////////////////////////////////////////
 
 
 ///////////////////////////////////////////////////////////////////////////////
-/// Class RootWindow
+/// Class MyFrame1
 ///////////////////////////////////////////////////////////////////////////////
-class RootWindow : public wxFrame
+class MyFrame1 : public wxFrame
 {
 	private:
 
 	protected:
-		wxMenuBar* m_menubar2;
-		wxMenu* Menu;
-		wxMenu* WczytywanieMenu;
-		wxPanel* PanelWykresu;
-		wxButton* KolorWykresu;
-		wxButton* KolorPunktow;
-		wxStaticText* Skalowanie;
-		wxSlider* SliderSkali;
-		wxStaticText* WielkoscPunktow;
-		wxTextCtrl* TextPunktow;
-		wxRadioButton* SlupkiBledow;
-		wxStaticText* TypRegresji;
-		wxComboBox* m_comboBox1;
+		wxButton* m_button4;
+		wxButton* m_button5;
+		wxStaticText* m_staticText19;
+		wxSlider* m_slider1;
+		wxStaticText* m_staticText20;
+		wxTextCtrl* m_textCtrl9;
+		wxRadioButton* m_radioBtn3;
+		wxStaticText* m_staticText21;
+		wxChoice* m_choice2;
+		wxMenuBar* m_menubar1;
+		wxMenu* m_menu1;
+		wxMenu* m_menu11;
 
 		// Virtual event handlers, overide them in your derived class
-		virtual void Draw( wxPaintEvent& event ) { event.Skip(); }
-		virtual void ReDraw( wxUpdateUIEvent& event ) { event.Skip(); }
-		virtual void WczytajZPliku( wxCommandEvent& event ) { event.Skip(); }
-		virtual void WczytajZKlawiatury( wxCommandEvent& event ) { event.Skip(); }
-		virtual void Zapisz( wxCommandEvent& event ) { event.Skip(); }
-		virtual void WybierzKolorWykresu( wxCommandEvent& event ) { event.Skip(); }
-		virtual void WybierzKolorPunktow( wxCommandEvent& event ) { event.Skip(); }
-		virtual void ZmienSkale( wxScrollEvent& event ) { event.Skip(); }
-		virtual void ZmienWilekoscPunktow( wxCommandEvent& event ) { event.Skip(); }
-		virtual void WyswietlSlupkiBledow( wxCommandEvent& event ) { event.Skip(); }
-		virtual void ZmienTypRegresji( wxCommandEvent& event ) { event.Skip(); }
+		virtual void MainFormClose( wxCloseEvent& event ) { event.Skip(); }
+		virtual void WxPanel_Repaint( wxUpdateUIEvent& event ) { event.Skip(); }
+		virtual void ChangeChartColor( wxCommandEvent& event ) { event.Skip(); }
+		virtual void ChangePointColor( wxCommandEvent& event ) { event.Skip(); }
+		virtual void ChangeScale( wxScrollEvent& event ) { event.Skip(); }
+		virtual void ChangePointSize( wxCommandEvent& event ) { event.Skip(); }
+		virtual void AddError( wxCommandEvent& event ) { event.Skip(); }
+		virtual void ChangeRegresionType( wxCommandEvent& event ) { event.Skip(); }
 
 
 	public:
+		wxPanel* WxPanel;
 
-		RootWindow( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("TEST"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 875,577 ), long style = wxDEFAULT_FRAME_STYLE|wxTAB_TRAVERSAL );
+		MyFrame1( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("Regresja liniowa"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 777,497 ), long style = wxDEFAULT_FRAME_STYLE|wxTAB_TRAVERSAL );
 
-		~RootWindow();
+		~MyFrame1();
 
 };
 
