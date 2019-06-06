@@ -12,10 +12,7 @@ ChartClass::ChartClass(std::shared_ptr<ConfigClass> c)
 
 void ChartClass::Set_Range()
 	{
-	 double xmin=9999.9,xmax=-9999.9,ymin=9999.9,ymax=-9999.9;
-
-	 xmin=cfg->Get_x_start();
-	 xmax=cfg->Get_x_stop();
+	 double xmin=-9.9,xmax=9.9,ymin=-9.9,ymax=9.9;
 
 	 y_min=ymin;
 	 y_max=ymax;
@@ -32,10 +29,11 @@ void ChartClass::Draw(wxDC *dc, int w, int h)
 	dc->SetPen(wxPen(wxColor(255, 0, 0)));
 	dc->DrawRectangle(10, 10, w - 20, h - 20);
 	dc->SetPen(wxPen(wxColor(0, 0, 255)));
-	dc->SetClippingRegion(wxRect(10, 10, width, height));
-	
+	dc->SetClippingRegion(10, 10, w - 20, h - 20);
 	SetTransform();
 	DrawAxies(dc);
+	DrawPoints(dc);
+	DrawLine(dc);
 }
 
 wxPoint ChartClass::point2d(Matrix t, double x1, double y1){
@@ -98,15 +96,32 @@ void ChartClass::DrawAxies(wxDC *dc) {
 	Set_Range();
 
 	//XAxis
-	*x1 = x_min; *x2 = x_max-1; *y1 = 0; *y2 = 0;
+	*x1 = x_min; *x2 = x_max; *y1 = 0; *y2 = 0;
 	dc->DrawLine(point2d(tr,*x1,*y1),point2d(tr, *x2,*y2)); 
 
 	//YAxis
 	*x1 = 0; *x2 = 0; *y1 = y_min; *y2 = y_max;
 	dc->DrawLine(point2d(tr,*x1, *y1), point2d(tr,*x2, *y2));
 
+
+
 	delete x1;
 	delete x2;
 	delete y1;
 	delete y2;
+}
+
+void ChartClass::DrawPoints(wxDC *dc) {
+	data.AddCords(5.1, 3.6);
+	data.AddCords(2.4, 2.2);
+	data.AddCords(-2.0, -8.9);
+	for (int i = 0; i < data.n; ++i) {
+		dc->DrawCircle(point2d(tr, data.Table[2 * i], data.Table[2 * i + 1]), 10 * (i + 1));
+		dc->DrawRotatedText(wxString::Format("%.2lf", data.Table[2 * i]), point2d(tr,data.Table[2 * i],0), cfg->Get_Alpha());
+		//dc->DrawRotatedText(wxString::Format("%.2lf", data.Table[2 * i+1]), point2d(tr,0, data.Table[2 * i+1]), cfg->Get_Alpha());
+	}
+}
+void ChartClass::DrawLine(wxDC *dc) {
+	data.RegresjaLiniowa();
+	dc->DrawLine(point2d(tr, x_min, data.parA*x_min + data.parB), point2d(tr, x_max, data.parA*x_max + data.parB));
 }

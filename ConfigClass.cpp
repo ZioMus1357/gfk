@@ -12,10 +12,10 @@ ConfigClass::ConfigClass(GUIMyFrame1 *wnd)
  ScreenRotate=true;
  F_type=0;
  alpha=0;
- x0=-1.0;
- y0=-2.0;
- x1=1.0;
- y1=2.0;
+ x0=-10.0;
+ y0=-10.0;
+ x1=10.0;
+ y1=10.0;
  dX=0;
  dY=0;
 }

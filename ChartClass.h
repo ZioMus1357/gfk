@@ -4,7 +4,7 @@
 #include <memory>
 #include "ConfigClass.h"
 #include"vecmat.h"
-
+#include"Container.h"
 class Matrix;
 
 class ChartClass
@@ -16,9 +16,10 @@ class ChartClass
         double y_min,y_max; // zakres wartosci przyjmowanych przez funkcje
 		Matrix tr;
         wxPoint point2d(Matrix t,double x1,double y1);
-        // powyzej sugerowana funkcja transformujaca odcinki (jesli ktos ma 
-        // inny pomysl mozna ja usunac)
+		Container data;
 		void DrawAxies(wxDC *dc);
+		void DrawPoints(wxDC *dc);
+		void DrawLine(wxDC * dc);
        
     public:
         ChartClass(std::shared_ptr<ConfigClass> c);
