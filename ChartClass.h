@@ -16,12 +16,12 @@ class ChartClass
         double y_min,y_max; // zakres wartosci przyjmowanych przez funkcje
 		Matrix tr;
         wxPoint point2d(Matrix t,double x1,double y1);
-		Container data;
 		void DrawAxies(wxDC *dc);
 		void DrawPoints(wxDC *dc);
 		void DrawLine(wxDC * dc);
        
     public:
+		Container data;
         ChartClass(std::shared_ptr<ConfigClass> c);
         void Set_Range();   // ustala wartosci zmiennych x_min,y_min,x_max,y_max
         double Get_Y_min(); // zwraca y_min

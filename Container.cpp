@@ -1,5 +1,7 @@
-#include"Container.h"
-#include<iostream>
+#include "Container.h"
+#include <iostream>
+#include <fstream>
+#include <math.h>
 
 using namespace std;
 
@@ -17,6 +19,16 @@ void Container::RegresjaLiniowa() {
 	}
 	parA = tmp1 / tmp2;
 	parB = srY - parA * srX;
+}
+
+void Container::BladLiniowej() {
+	eLin = new double[n];
+	double sumE = 0;
+	for (int i = 0; i < n; ++i) {
+		eLin[i] = Table[2 * i + 1] - (parB * Table[2 * i] + parA);
+		sumE += eLin[i] * eLin[i];
+	}
+	errLin = sqrt(sumE / (n - 2.));
 }
 
 void Container::AddCords(double xCord, double yCord) {
@@ -45,6 +57,20 @@ void Container::AddCords(double xCord, double yCord) {
 	}
 }
 
+void Container::AddFromFile(char* filename) {
+	double x, y;
+	ifstream file;
+	file.open(filename, ios::in);
+	if (file.is_open()) {
+		while (!file.eof()) {
+			file >> x >> y;
+			this->AddCords(x, y);
+		}
+		file.close();
+	}
+}
+
 Container::~Container() {
 	delete[] Table;
+	delete[] eLin;
 }

@@ -7,6 +7,9 @@
 ChartClass::ChartClass(std::shared_ptr<ConfigClass> c)
 {
     cfg= std::move(c);
+	data.AddCords(5.1, 3.6);
+	data.AddCords(2.4, 2.2);
+	data.AddCords(-2.0, -8.9);
 
 }
 
@@ -112,13 +115,10 @@ void ChartClass::DrawAxies(wxDC *dc) {
 }
 
 void ChartClass::DrawPoints(wxDC *dc) {
-	data.AddCords(5.1, 3.6);
-	data.AddCords(2.4, 2.2);
-	data.AddCords(-2.0, -8.9);
 	for (int i = 0; i < data.n; ++i) {
-		dc->DrawCircle(point2d(tr, data.Table[2 * i], data.Table[2 * i + 1]), 10 * (i + 1));
-		dc->DrawRotatedText(wxString::Format("%.2lf", data.Table[2 * i]), point2d(tr,data.Table[2 * i],0), cfg->Get_Alpha());
-		//dc->DrawRotatedText(wxString::Format("%.2lf", data.Table[2 * i+1]), point2d(tr,0, data.Table[2 * i+1]), cfg->Get_Alpha());
+		dc->DrawCircle(point2d(tr, data.Table[2 * i], data.Table[2 * i + 1]), i + 10 );
+		dc->DrawRotatedText(wxString::Format("%.2lf", data.Table[2 * i]), point2d(tr,data.Table[2 * i], data.Table[2 * i + 1]), cfg->Get_Alpha());
+		dc->DrawRotatedText(wxString::Format("%.2lf", data.Table[2 * i+1]), point2d(tr, data.Table[2 * i] + 1, data.Table[2 * i+1]), cfg->Get_Alpha());
 	}
 }
 void ChartClass::DrawLine(wxDC *dc) {

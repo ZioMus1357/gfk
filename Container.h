@@ -4,32 +4,28 @@
 
 class Container {
 public:
-	//    Container(); raczej nie potrzebne 
 
 	void AddCords(double xCord, double yCord);
 
-	void AddFromFile(std::ifstream file);
-	/*  w sumie to mozna wszystko na public zrobic i jebac getery
-		double GetXmin();
+	void AddFromFile(char* filename);
 
-		double GetXmax();
+	void BladLiniowej();
 
-		double GetYmin();
-
-		double GetYmax();
-	*/
 	void RegresjaLiniowa();
 
 	~Container();
-	//private:
-
+	//tabel z wspolrzednymi
 	double * Table;
-
+	//ilosc punktow
 	int n = 0;
-
+	//paramert a regresji liniowej
 	double parA;
-
+	//parametr b regresji liniowej
 	double parB;
+	//blad regresji liniowej
+	double errLin;
+	//bledy pojedynczych pomiarow w liniowej
+	double * eLin;
 
 	double xMin;
 

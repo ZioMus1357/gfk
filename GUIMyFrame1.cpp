@@ -7,6 +7,7 @@ GUIMyFrame1::GUIMyFrame1( wxWindow* parent )
 MyFrame1( parent )
 {
 	cfg = std::make_shared<ConfigClass>(this);
+	chart = new ChartClass(cfg);
 }
 
 void GUIMyFrame1::MainFormClose( wxCloseEvent& event )
@@ -51,7 +52,12 @@ void GUIMyFrame1::ChangeRegresionType( wxCommandEvent& event )
 
 void GUIMyFrame1::OpenFormFile( wxCommandEvent& event )
 {
-// TODO: Implement OpenFormFile
+	{
+		wxFileDialog WxOpenFileDialog(this, _("Choose a file"), _(""), _(""), _("config files (*.txt)|*.txt"), wxFD_OPEN);
+
+		if (WxOpenFileDialog.ShowModal() == wxID_OK) chart->data.AddFromFile((const_cast<char*>((const char*)WxOpenFileDialog.GetPath().mb_str())));
+		Repaint();
+	}
 }
 
 void GUIMyFrame1::OpenFromKeyboard( wxCommandEvent& event )
@@ -82,10 +88,10 @@ void GUIMyFrame1::Repaint()
 	m_buffer = wxBitmap(WxPanel->GetSize().x, WxPanel->GetSize().y);
 	wxBufferedDC MyDC(&__MyDC, m_buffer);
 
-	 ChartClass MyChart(cfg);
+	 //ChartClass MyChart(cfg);
 	 int w, h;
 	 WxPanel->GetSize(&w, &h);
-	 MyChart.Draw(&MyDC, w, h);
+	 chart->Draw(&MyDC, w, h);
 }
 
 
