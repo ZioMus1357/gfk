@@ -5,6 +5,8 @@
 class Container {
 public:
 
+	Container();
+
 	void AddCords(double xCord, double yCord);
 
 	void AddFromFile(char* filename);
@@ -13,8 +15,10 @@ public:
 
 	void RegresjaLiniowa();
 
+	void RegresjaNieLiniowa();
+
 	~Container();
-	//tabel z wspolrzednymi
+	//tabela z wspolrzednymi
 	double * Table;
 	//ilosc punktow
 	int n = 0;
@@ -26,6 +30,8 @@ public:
 	double errLin;
 	//bledy pojedynczych pomiarow w liniowej
 	double * eLin;
+	//tabela z wspolczynnikami regresji nie liniowej
+	double * NLpar;
 
 	double xMin;
 
