@@ -122,6 +122,5 @@ void ChartClass::DrawPoints(wxDC *dc) {
 	}
 }
 void ChartClass::DrawLine(wxDC *dc) {
-	data.RegresjaLiniowa();
 	dc->DrawLine(point2d(tr, x_min, data.parA*x_min + data.parB), point2d(tr, x_max, data.parA*x_max + data.parB));
 }
