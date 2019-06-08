@@ -108,11 +108,11 @@ void ChartClass::DrawAxies(wxDC *dc)
 
 	//XAxis
 	*x1 = x_min; *x2 = x_max; *y1 = 0; *y2 = 0;
-	dc->DrawLine(point2d(tr,*x1,*y1),point2d(tr, *x2,*y2)); 
+	dc->DrawLine(point2d(tr,*x1,*y1),point2d(tr, *x2 * 2*(1/cfg->scale),*y2*2*(1 / cfg->scale)));
 
 	//YAxis
 	*x1 = 0; *x2 = 0; *y1 = y_min; *y2 = y_max;
-	dc->DrawLine(point2d(tr,*x1, *y1), point2d(tr,*x2, *y2));
+	dc->DrawLine(point2d(tr,*x1, *y1 * 2 * (1 / cfg->scale)), point2d(tr,*x2, *y2 * 2 * (1 / cfg->scale)));
 
 
 
