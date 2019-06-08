@@ -126,7 +126,7 @@ void ChartClass::DrawPoints(wxDC *dc)
 {
 	for (int i = 0; i < data.n; ++i) 
 	{
-		dc->DrawCircle(point2d(tr, data.Table[2 * i], data.Table[2 * i + 1]), pointSize * cfg->scale )
+		dc->DrawCircle(point2d(tr, data.Table[2 * i], data.Table[2 * i + 1]), pointSize * cfg->scale );
 		dc->DrawRotatedText(wxString::Format("%.2lf", data.Table[2 * i]), point2d(tr,data.Table[2 * i], data.Table[2 * i + 1]), cfg->Get_Alpha());
 		dc->DrawRotatedText(wxString::Format("%.2lf", data.Table[2 * i+1]), point2d(tr, data.Table[2 * i] + 1, data.Table[2 * i+1]), cfg->Get_Alpha());
 	}
