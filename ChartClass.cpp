@@ -67,8 +67,8 @@ double ChartClass::Get_Y_max()
 void ChartClass::SetTransform() 
 {
 	Matrix transform; // skalowanie
-	transform.data[0][0] = width / (cfg->Get_x1() - cfg->Get_x0());
-	transform.data[1][1] = height / (cfg->Get_y1() - cfg->Get_y0()) *(-1);
+	transform.data[0][0] = cfg->scale *  width / (cfg->Get_x1() - cfg->Get_x0());
+	transform.data[1][1] = cfg->scale * height / (cfg->Get_y1() - cfg->Get_y0()) *(-1);
 	transform.data[0][2] = 10- transform.data[0][0] * cfg->Get_x0();
 	transform.data[1][2] = 10- transform.data[1][1] * cfg->Get_y1();
 	Matrix transform2; // translacja

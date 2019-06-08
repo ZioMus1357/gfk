@@ -45,7 +45,9 @@ void GUIMyFrame1::ChangePointColor( wxCommandEvent& event )
 
 void GUIMyFrame1::ChangeScale( wxScrollEvent& event )
 {
-// TODO: Implement ChangeScale
+	cfg->scale = m_slider1->GetValue() + 10;
+	cfg->scale /= 100;
+	Repaint();
 }
 
 void GUIMyFrame1::ChangePointSize( wxCommandEvent& event )
