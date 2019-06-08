@@ -15,7 +15,7 @@ ChartClass::ChartClass(std::shared_ptr<ConfigClass> c)
 
 void ChartClass::Set_Range()
 {
-	 double xmin=-9.9,xmax=9.9,ymin=-9.9,ymax=9.9;
+	 double xmin=-12,xmax=12,ymin=-12,ymax=12;
 
 	 y_min=ymin;
 	 y_max=ymax;
@@ -31,13 +31,15 @@ void ChartClass::Draw(wxDC *dc, int w, int h)
 	dc->Clear();
 	dc->SetPen(wxPen(chartColor));
 	dc->DrawRectangle(10, 10, w - 20, h - 20);
+	dc->SetPen(wxPen(pointColor));
+	dc->SetBrush(*wxTRANSPARENT_BRUSH);
+	DrawPoints(dc);
 	dc->SetPen(wxPen(chartColor));
 	dc->SetClippingRegion(10, 10, w - 20, h - 20);
 	SetTransform();
 	DrawAxies(dc);
 	DrawLine(dc);
-	dc->SetPen(wxPen(pointColor));
-	DrawPoints(dc);
+
 }
 
 wxPoint ChartClass::point2d(Matrix t, double x1, double y1)
@@ -65,8 +67,8 @@ double ChartClass::Get_Y_max()
 void ChartClass::SetTransform() 
 {
 	Matrix transform; // skalowanie
-	transform.data[0][0] = cfg->scale * width / (cfg->Get_x1() - cfg->Get_x0());
-	transform.data[1][1] = cfg->scale * height / (cfg->Get_y1() - cfg->Get_y0()) *(-1);
+	transform.data[0][0] = width / (cfg->Get_x1() - cfg->Get_x0());
+	transform.data[1][1] = height / (cfg->Get_y1() - cfg->Get_y0()) *(-1);
 	transform.data[0][2] = 10- transform.data[0][0] * cfg->Get_x0();
 	transform.data[1][2] = 10- transform.data[1][1] * cfg->Get_y1();
 	Matrix transform2; // translacja
@@ -124,7 +126,7 @@ void ChartClass::DrawPoints(wxDC *dc)
 {
 	for (int i = 0; i < data.n; ++i) 
 	{
-		dc->DrawCircle(point2d(tr, data.Table[2 * i], data.Table[2 * i + 1]), i + 10 );
+		dc->DrawCircle(point2d(tr, data.Table[2 * i], data.Table[2 * i + 1]), pointSize );
 		dc->DrawRotatedText(wxString::Format("%.2lf", data.Table[2 * i]), point2d(tr,data.Table[2 * i], data.Table[2 * i + 1]), cfg->Get_Alpha());
 		dc->DrawRotatedText(wxString::Format("%.2lf", data.Table[2 * i+1]), point2d(tr, data.Table[2 * i] + 1, data.Table[2 * i+1]), cfg->Get_Alpha());
 	}

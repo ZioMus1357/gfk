@@ -79,9 +79,4 @@ public:
 
 	/** @brief	The y maximum */
 	double yMax;
-
-
-	void RegresjaNieLiniowa();
-	double * NLpar;
-	Container();
 };
