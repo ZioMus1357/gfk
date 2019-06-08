@@ -18,7 +18,6 @@ ConfigClass::ConfigClass(GUIMyFrame1 *wnd)
  y1=10.0;
  dX=0;
  dY=0;
- scale = 1;
 }
 
 void ConfigClass::Save(char *filename)

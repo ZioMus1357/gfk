@@ -46,6 +46,8 @@ class ChartClass
 		/** @brief	The point color */
 		wxColor pointColor = wxColor(125, 125, 0);
 
+		double pointSize = 1;
+
         /**********************************************************************************************//**
          * @fn	wxPoint ChartClass::point2d(Matrix t,double x1,double y1);
          *
@@ -171,6 +173,8 @@ class ChartClass
 
 		void SetPointColor(wxColor color) { pointColor = color; }
 
+		double * GetPointSizePointer() { return &pointSize; }
+ 
 };
 
 #endif

@@ -43,16 +43,15 @@ void GUIMyFrame1::ChangePointColor( wxCommandEvent& event )
 	}
 }
 
-void GUIMyFrame1::ChangeScale(wxScrollEvent& event)
+void GUIMyFrame1::ChangeScale( wxScrollEvent& event )
 {
-	cfg->scale = m_slider1->GetValue() +10;
-	cfg->scale /= 100;
-	Repaint();
+// TODO: Implement ChangeScale
 }
 
 void GUIMyFrame1::ChangePointSize( wxCommandEvent& event )
 {
-// TODO: Implement ChangePointSize
+	m_textCtrl9->GetValue().ToDouble(chart->GetPointSizePointer());
+
 }
 
 void GUIMyFrame1::AddError( wxCommandEvent& event )
