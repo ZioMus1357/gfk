@@ -5,33 +5,83 @@
 class Container {
 public:
 
+	/**********************************************************************************************//**
+	 * @fn	void Container::AddCords(double xCord, double yCord);
+	 *
+	 * @brief	Adds the cords to 'yCord'
+	 *
+	 * @param	xCord	The x cord.
+	 * @param	yCord	The y cord.
+	 **************************************************************************************************/
+
 	void AddCords(double xCord, double yCord);
+
+	/**********************************************************************************************//**
+	 * @fn	void Container::AddFromFile(char* filename);
+	 *
+	 * @brief	Adds from file
+	 *
+	 * @param [in,out]	filename	If non-null, filename of the file.
+	 **************************************************************************************************/
 
 	void AddFromFile(char* filename);
 
+	/**********************************************************************************************//**
+	 * @fn	void Container::BladLiniowej();
+	 *
+	 * @brief	Blad liniowej
+	 **************************************************************************************************/
+
 	void BladLiniowej();
+
+	/**********************************************************************************************//**
+	 * @fn	void Container::RegresjaLiniowa();
+	 *
+	 * @brief	Regresja liniowa
+	 **************************************************************************************************/
 
 	void RegresjaLiniowa();
 
+	/**********************************************************************************************//**
+	 * @fn	Container::~Container();
+	 *
+	 * @brief	Destructor
+	 **************************************************************************************************/
+
 	~Container();
-	//tabel z wspolrzednymi
+
+	/** @brief	The table with co-ordinates*/
 	double * Table;
-	//ilosc punktow
+	
+	/** @brief	An int to process with amount of points*/
 	int n = 0;
-	//paramert a regresji liniowej
+	
+	/** @brief	Paramert a Linear Regression */
 	double parA;
-	//parametr b regresji liniowej
+	
+	/** @brief	Parametr b Linear Regression */
 	double parB;
-	//blad regresji liniowej
+	
+	/** @brief	Linear Regression error*/
 	double errLin;
-	//bledy pojedynczych pomiarow w liniowej
+	
+	/** @brief	every single measurement error */
 	double * eLin;
 
+	/** @brief	The x minimum */
 	double xMin;
 
+	/** @brief	The x maximum */
 	double xMax;
 
+	/** @brief	The y minimum */
 	double yMin;
 
+	/** @brief	The y maximum */
 	double yMax;
+
+
+	void RegresjaNieLiniowa();
+	double * NLpar;
+	Container();
 };

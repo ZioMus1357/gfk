@@ -14,7 +14,7 @@ ChartClass::ChartClass(std::shared_ptr<ConfigClass> c)
 }
 
 void ChartClass::Set_Range()
-	{
+{
 	 double xmin=-9.9,xmax=9.9,ymin=-9.9,ymax=9.9;
 
 	 y_min=ymin;
@@ -29,17 +29,19 @@ void ChartClass::Draw(wxDC *dc, int w, int h)
 	height = h - 20;
 	dc->SetBackground(wxBrush(wxColor(255, 255, 255)));
 	dc->Clear();
-	dc->SetPen(wxPen(wxColor(255, 0, 0)));
+	dc->SetPen(wxPen(chartColor));
 	dc->DrawRectangle(10, 10, w - 20, h - 20);
-	dc->SetPen(wxPen(wxColor(0, 0, 255)));
+	dc->SetPen(wxPen(chartColor));
 	dc->SetClippingRegion(10, 10, w - 20, h - 20);
 	SetTransform();
 	DrawAxies(dc);
-	DrawPoints(dc);
 	DrawLine(dc);
+	dc->SetPen(wxPen(pointColor));
+	DrawPoints(dc);
 }
 
-wxPoint ChartClass::point2d(Matrix t, double x1, double y1){
+wxPoint ChartClass::point2d(Matrix t, double x1, double y1)
+{
 	Vector vector;
 	vector.Set(x1, y1);
 	vector = t * vector;
@@ -60,10 +62,11 @@ double ChartClass::Get_Y_max()
     return y_max;
 }
 
-void ChartClass::SetTransform() {
+void ChartClass::SetTransform() 
+{
 	Matrix transform; // skalowanie
-	transform.data[0][0] = width / (cfg->Get_x1() - cfg->Get_x0());
-	transform.data[1][1] = height / (cfg->Get_y1() - cfg->Get_y0()) *(-1);
+	transform.data[0][0] = cfg->scale * width / (cfg->Get_x1() - cfg->Get_x0());
+	transform.data[1][1] = cfg->scale * height / (cfg->Get_y1() - cfg->Get_y0()) *(-1);
 	transform.data[0][2] = 10- transform.data[0][0] * cfg->Get_x0();
 	transform.data[1][2] = 10- transform.data[1][1] * cfg->Get_y1();
 	Matrix transform2; // translacja
@@ -73,11 +76,13 @@ void ChartClass::SetTransform() {
 
 	Matrix transform3; //rotacja
 	int Rx, Ry;
-	if (cfg->RotateScreenCenter()) {
+	if (cfg->RotateScreenCenter()) 
+	{
 		Rx = width / 2;
 		Ry = height / 2;
 	}
-	else {
+	else 
+	{
 		Vector temp;
 		temp.Set(0, 0);
 		temp = transform * temp;
@@ -94,7 +99,8 @@ void ChartClass::SetTransform() {
 	tr = transform3 * transform2 * transform;
 }
 
-void ChartClass::DrawAxies(wxDC *dc) {
+void ChartClass::DrawAxies(wxDC *dc) 
+{
 	double *x1=new double, *x2 = new double, *y1 = new double, *y2 = new double;
 	Set_Range();
 
@@ -114,14 +120,17 @@ void ChartClass::DrawAxies(wxDC *dc) {
 	delete y2;
 }
 
-void ChartClass::DrawPoints(wxDC *dc) {
-	for (int i = 0; i < data.n; ++i) {
+void ChartClass::DrawPoints(wxDC *dc) 
+{
+	for (int i = 0; i < data.n; ++i) 
+	{
 		dc->DrawCircle(point2d(tr, data.Table[2 * i], data.Table[2 * i + 1]), i + 10 );
 		dc->DrawRotatedText(wxString::Format("%.2lf", data.Table[2 * i]), point2d(tr,data.Table[2 * i], data.Table[2 * i + 1]), cfg->Get_Alpha());
 		dc->DrawRotatedText(wxString::Format("%.2lf", data.Table[2 * i+1]), point2d(tr, data.Table[2 * i] + 1, data.Table[2 * i+1]), cfg->Get_Alpha());
 	}
 }
-void ChartClass::DrawLine(wxDC *dc) {
+void ChartClass::DrawLine(wxDC *dc) 
+{
 	data.RegresjaLiniowa();
 	dc->DrawLine(point2d(tr, x_min, data.parA*x_min + data.parB), point2d(tr, x_max, data.parA*x_max + data.parB));
 }

@@ -1,6 +1,7 @@
 #include "GUIMyFrame1.h"
 #include"ChartClass.h"
 #include"ConfigClass.h"
+#include <wx/colordlg.h>
 
 GUIMyFrame1::GUIMyFrame1( wxWindow* parent )
 :
@@ -12,27 +13,41 @@ MyFrame1( parent )
 
 void GUIMyFrame1::MainFormClose( wxCloseEvent& event )
 {
- Destroy();
+	Destroy();
 }
 
 void GUIMyFrame1::WxPanel_Repaint( wxUpdateUIEvent& event )
 {
- Repaint();
+	Repaint();
 }
 
-void GUIMyFrame1::ChangeChartColor( wxCommandEvent& event )
+void GUIMyFrame1::ChangeChartColor(wxCommandEvent& event)
 {
-// TODO: Implement ChangeChartColor
+	wxColourDialog ColorPicker(this);
+
+	if (ColorPicker.ShowModal() == wxID_OK) 
+	{
+		chart->SetChartColor(ColorPicker.GetColourData().GetColour());
+		Repaint();
+	}
 }
 
 void GUIMyFrame1::ChangePointColor( wxCommandEvent& event )
 {
-// TODO: Implement ChangePointColor
+	wxColourDialog ColorPicker(this);
+
+	if (ColorPicker.ShowModal() == wxID_OK)
+	{
+		chart->SetPointColor(ColorPicker.GetColourData().GetColour());
+		Repaint();
+	}
 }
 
-void GUIMyFrame1::ChangeScale( wxScrollEvent& event )
+void GUIMyFrame1::ChangeScale(wxScrollEvent& event)
 {
-// TODO: Implement ChangeScale
+	cfg->scale = m_slider1->GetValue() +10;
+	cfg->scale /= 100;
+	Repaint();
 }
 
 void GUIMyFrame1::ChangePointSize( wxCommandEvent& event )
@@ -52,12 +67,13 @@ void GUIMyFrame1::ChangeRegresionType( wxCommandEvent& event )
 
 void GUIMyFrame1::OpenFormFile( wxCommandEvent& event )
 {
-	{
-		wxFileDialog WxOpenFileDialog(this, _("Choose a file"), _(""), _(""), _("config files (*.txt)|*.txt"), wxFD_OPEN);
+	wxFileDialog WxOpenFileDialog(this, _("Choose a file"), _(""), _(""), _("config files (*.txt)|*.txt"), wxFD_OPEN);
 
-		if (WxOpenFileDialog.ShowModal() == wxID_OK) chart->data.AddFromFile((const_cast<char*>((const char*)WxOpenFileDialog.GetPath().mb_str())));
-		Repaint();
-	}
+	if (WxOpenFileDialog.ShowModal() == wxID_OK) 
+		chart->data.AddFromFile((const_cast<char*>((const char*)WxOpenFileDialog.GetPath().mb_str())));
+
+	Repaint();
+
 }
 
 void GUIMyFrame1::OpenFromKeyboard( wxCommandEvent& event )

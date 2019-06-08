@@ -39,18 +39,40 @@ class GUIMyFrame1 : public MyFrame1
 	public:
 		/** Constructor */
 		GUIMyFrame1( wxWindow* parent );
-	//// end generated class members
-  void Repaint();
-  void UpdateControls();
-  ~GUIMyFrame1();
-  std::shared_ptr<ConfigClass> cfg;
-  wxBitmap m_buffer;
-  wxImage m_image;
-  ChartClass* chart;
+		
+		//// end generated class members
 
+		/**********************************************************************************************//**
+		 * @fn	void GUIMyFrame1::Repaint();
+		 *
+		 * @brief	Repaints this object
+		 **************************************************************************************************/
 
+		void Repaint();
 
+		/**********************************************************************************************//**
+		 * @fn	void GUIMyFrame1::UpdateControls();
+		 *
+		 * @brief	Updates the controls
+		 **************************************************************************************************/
 
+		void UpdateControls();
+
+		/**********************************************************************************************//**
+		 * @fn	GUIMyFrame1::~GUIMyFrame1();
+		 *
+		 * @brief	Destructor
+		 **************************************************************************************************/
+
+		~GUIMyFrame1();
+		/** @brief	The configuration */
+		std::shared_ptr<ConfigClass> cfg;
+		/** @brief	The buffer */
+		wxBitmap m_buffer;
+		/** @brief	The image */
+		wxImage m_image;
+		/** @brief	The chart */
+		ChartClass* chart;
 
 
 };
