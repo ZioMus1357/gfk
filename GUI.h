@@ -52,6 +52,7 @@ class MyFrame1 : public wxFrame
 		wxMenuBar* m_menubar1;
 		wxMenu* m_menu1;
 		wxMenu* m_menu11;
+		wxButton* WxButton2;
 
 		// Virtual event handlers, overide them in your derived class
 		virtual void MainFormClose( wxCloseEvent& event ) { event.Skip(); }
@@ -65,6 +66,7 @@ class MyFrame1 : public wxFrame
 		virtual void OpenFormFile( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OpenFromKeyboard( wxCommandEvent& event ) { event.Skip(); }
 		virtual void Save( wxCommandEvent& event ) { event.Skip(); }
+		virtual void Copy(wxCommandEvent& event) { event.Skip(); }
 
 
 	public:

@@ -57,6 +57,9 @@ MyFrame1::MyFrame1( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_choice2->SetSelection( 0 );
 	bSizer2->Add( m_choice2, 0, wxALL, 5 );
 
+	WxButton2 = new wxButton(this, wxID_ANY, _("Kopiuj"), wxDefaultPosition, wxDefaultSize, 0);
+	bSizer2->Add(WxButton2, 0, wxALL, 5);
+
 
 	bSizer1->Add( bSizer2, 0, wxALIGN_RIGHT, 5 );
 
@@ -80,6 +83,10 @@ MyFrame1::MyFrame1( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	wxMenuItem* m_menuItem5;
 	m_menuItem5 = new wxMenuItem( m_menu1, wxID_ANY, wxString( _("Zapisz do pliku") ) , wxEmptyString, wxITEM_NORMAL );
 	m_menu1->Append( m_menuItem5 );
+
+	wxMenuItem* m_menuItem6;
+	m_menuItem6 = new wxMenuItem(m_menu1, wxID_ANY, wxString(_("Kopiuj")), wxEmptyString, wxITEM_NORMAL);
+	m_menu1->Append(m_menuItem6);
 
 	m_menubar1->Append( m_menu1, _("Menu") );
 
@@ -108,6 +115,8 @@ MyFrame1::MyFrame1( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_menu11->Bind(wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( MyFrame1::OpenFormFile ), this, m_menuItem3->GetId());
 	m_menu11->Bind(wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( MyFrame1::OpenFromKeyboard ), this, m_menuItem4->GetId());
 	m_menu1->Bind(wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( MyFrame1::Save ), this, m_menuItem5->GetId());
+	m_menu1->Bind(wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler(MyFrame1::Copy), this, m_menuItem6->GetId());
+
 }
 
 MyFrame1::~MyFrame1()

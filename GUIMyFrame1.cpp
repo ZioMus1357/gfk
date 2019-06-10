@@ -3,6 +3,8 @@
 #include"ConfigClass.h"
 #include"DataWindow.h"
 #include <wx/colordlg.h>
+#include <wx/clipbrd.h>
+
 
 GUIMyFrame1::GUIMyFrame1( wxWindow* parent )
 :
@@ -10,6 +12,7 @@ MyFrame1( parent )
 {
 	cfg = std::make_shared<ConfigClass>(this);
 	chart = new ChartClass(cfg);
+
 }
 
 void GUIMyFrame1::MainFormClose( wxCloseEvent& event )
@@ -121,4 +124,21 @@ void GUIMyFrame1::Repaint()
 void GUIMyFrame1::UpdateControls()
 {
 
+}
+
+void GUIMyFrame1::Copy(wxCommandEvent &e)
+{
+	int w, h;
+	wxClientDC MyDC(WxPanel);
+	wxMemoryDC MyBitmapDC;
+	WxPanel->GetClientSize(&w, &h);
+	wxBitmap MyBitmap(w, h);
+	MyBitmapDC.SelectObject(MyBitmap);
+	MyBitmapDC.Blit(0, 0, w, h, &MyDC, 0, 0);
+
+	if (wxTheClipboard->Open())  // #include <wx/clipbrd.h>
+	{
+		wxTheClipboard->SetData(new wxBitmapDataObject(MyBitmap));
+		wxTheClipboard->Close();
+	}
 }

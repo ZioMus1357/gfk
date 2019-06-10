@@ -36,6 +36,8 @@ class GUIMyFrame1 : public MyFrame1
 		void OpenFormFile( wxCommandEvent& event );
 		void OpenFromKeyboard( wxCommandEvent& event );
 		void Save( wxCommandEvent& event );
+		void Copy(wxCommandEvent& event);
+
 	public:
 		/** Constructor */
 		GUIMyFrame1( wxWindow* parent );
