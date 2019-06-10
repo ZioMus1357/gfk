@@ -1,6 +1,7 @@
 #include "GUIMyFrame1.h"
 #include"ChartClass.h"
 #include"ConfigClass.h"
+#include"DataWindow.h"
 #include <wx/colordlg.h>
 
 GUIMyFrame1::GUIMyFrame1( wxWindow* parent )
@@ -58,7 +59,9 @@ void GUIMyFrame1::ChangePointSize( wxCommandEvent& event )
 
 void GUIMyFrame1::AddError( wxCommandEvent& event )
 {
-// TODO: Implement AddError
+	if (m_radioBtn3->IsEnabled())
+		cfg->RegresionError = true;
+	Repaint();
 }
 
 void GUIMyFrame1::ChangeRegresionType( wxCommandEvent& event )
@@ -80,6 +83,9 @@ void GUIMyFrame1::OpenFormFile( wxCommandEvent& event )
 void GUIMyFrame1::OpenFromKeyboard( wxCommandEvent& event )
 {
 // TODO: Implement OpenFromKeyboard
+	wxFrame *dataFrame = new DataWindow(this);
+	dataFrame->Show(true);
+	Repaint();
 }
 
 void GUIMyFrame1::Save( wxCommandEvent& event )

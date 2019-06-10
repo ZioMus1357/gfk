@@ -108,11 +108,11 @@ void ChartClass::DrawAxies(wxDC *dc)
 
 	//XAxis
 	*x1 = x_min; *x2 = x_max; *y1 = 0; *y2 = 0;
-	dc->DrawLine(point2d(tr,*x1,*y1),point2d(tr, *x2 * 2*(1/cfg->scale),*y2*2*(1 / cfg->scale)));
+	dc->DrawLine(point2d(tr, *x1, *y1), point2d(tr, *x2 * 2 * (1 / cfg->scale), *y2 * 2 * (1 / cfg->scale)));
 
 	//YAxis
 	*x1 = 0; *x2 = 0; *y1 = y_min; *y2 = y_max;
-	dc->DrawLine(point2d(tr,*x1, *y1 * 2 * (1 / cfg->scale)), point2d(tr,*x2, *y2 * 2 * (1 / cfg->scale)));
+	dc->DrawLine(point2d(tr, *x1, *y1 * 2 * (1 / cfg->scale)), point2d(tr, *x2, *y2 * 2 * (1 / cfg->scale)));
 
 
 
@@ -126,13 +126,18 @@ void ChartClass::DrawPoints(wxDC *dc)
 {
 	for (int i = 0; i < data.n; ++i) 
 	{
-		dc->DrawCircle(point2d(tr, data.Table[2 * i], data.Table[2 * i + 1]), pointSize * cfg->scale );
-		dc->DrawRotatedText(wxString::Format("%.2lf", data.Table[2 * i]), point2d(tr,data.Table[2 * i], data.Table[2 * i + 1]), cfg->Get_Alpha());
+		dc->DrawCircle(point2d(tr, data.Table[2 * i], data.Table[2 * i + 1]), pointSize * cfg->scale);
+		dc->DrawRotatedText(wxString::Format("%.2lf", data.Table[2 * i]), point2d(tr, data.Table[2 * i], data.Table[2 * i + 1]), cfg->Get_Alpha());
 		dc->DrawRotatedText(wxString::Format("%.2lf", data.Table[2 * i+1]), point2d(tr, data.Table[2 * i] + 1, data.Table[2 * i+1]), cfg->Get_Alpha());
 	}
 }
 void ChartClass::DrawLine(wxDC *dc) 
 {
 	data.RegresjaLiniowa();
+	data.BladLiniowej();
 	dc->DrawLine(point2d(tr, x_min, data.parA*x_min + data.parB), point2d(tr, x_max, data.parA*x_max + data.parB));
+	for (int i = 0; i < data.n; ++i) {
+		if (cfg->RegresionError == true)
+			dc->DrawLine(point2d(tr, data.Table[2 * i], data.eLin[i]), point2d(tr, data.Table[2 * i], 0));
+	}
 }

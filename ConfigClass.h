@@ -284,6 +284,7 @@ class ConfigClass
 
         void Load(char *filename);
 		double scale;
+		bool RegresionError;
 };
 
 #endif
