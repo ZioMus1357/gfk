@@ -25,40 +25,59 @@ MyFrame1::MyFrame1( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	bSizer2 = new wxBoxSizer( wxVERTICAL );
 
 	m_button4 = new wxButton( this, wxID_ANY, _("Kolor Wykresu"), wxDefaultPosition, wxDefaultSize, 0 );
-	bSizer2->Add( m_button4, 0, wxALL, 5 );
+	bSizer2->Add( m_button4, 0, wxALL | wxALIGN_CENTER_HORIZONTAL, 5 );
 
-	m_button5 = new wxButton( this, wxID_ANY, _("Kolor Punktów"), wxDefaultPosition, wxDefaultSize, 0 );
-	bSizer2->Add( m_button5, 0, wxALL, 5 );
+	m_button5 = new wxButton( this, wxID_ANY, _("Kolor Punkt\u00F3w:"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer2->Add( m_button5, 0, wxALL | wxALIGN_CENTER_HORIZONTAL, 5 );
 
-	m_staticText19 = new wxStaticText( this, wxID_ANY, _("Skala wykresu"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText19 = new wxStaticText( this, wxID_ANY, _("Skala wykresu:"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText19->Wrap( -1 );
 	bSizer2->Add( m_staticText19, 0, wxALL|wxALIGN_CENTER_HORIZONTAL, 5 );
 
 	m_slider1 = new wxSlider( this, wxID_ANY, 0, 0, 100, wxDefaultPosition, wxDefaultSize, wxSL_HORIZONTAL );
 	bSizer2->Add( m_slider1, 0, wxALL|wxEXPAND, 5 );
 
-	m_staticText20 = new wxStaticText( this, wxID_ANY, _("Wielkosc Punktow"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText20 = new wxStaticText( this, wxID_ANY, _("Wielko\u015B\u0107 punkt\u00F3w:"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText20->Wrap( -1 );
 	bSizer2->Add( m_staticText20, 0, wxALL|wxALIGN_CENTER_HORIZONTAL, 5 );
 
 	m_textCtrl9 = new wxTextCtrl( this, wxID_ANY, _("1.0"), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer2->Add( m_textCtrl9, 0, wxALL|wxALIGN_CENTER_HORIZONTAL, 5 );
 
-	m_radioBtn3 = new wxRadioButton( this, wxID_ANY, _("Slupki Bledow"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText23 = new wxStaticText(this, wxID_ANY, _("Styl Punkt\u00F3w:"), wxDefaultPosition, wxDefaultSize, 0);
+	m_staticText23->Wrap(-1);
+	bSizer2->Add(m_staticText23, 0, wxALL | wxALIGN_CENTER_HORIZONTAL, 5);
+
+	wxString m_choice3Choices[] = { _("Okr\u0105g"), _("Kwadrat")};
+	int m_choice3NChoices = sizeof(m_choice3Choices) / sizeof(wxString);
+	m_choice3 = new wxChoice(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, m_choice3NChoices, m_choice3Choices, 0);
+	m_choice3->SetSelection(0);
+	bSizer2->Add(m_choice3, 0, wxALL | wxALIGN_CENTER_HORIZONTAL, 5);
+
+	m_radioBtn3 = new wxRadioButton( this, wxID_ANY, _("S\u0142upki B\u0142\u0119d\u00F3w:"), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer2->Add( m_radioBtn3, 0, wxALL|wxALIGN_CENTER_HORIZONTAL|wxEXPAND, 5 );
 
-	m_staticText21 = new wxStaticText( this, wxID_ANY, _("Typ Regresji"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText21 = new wxStaticText( this, wxID_ANY, _("Typ Regresji:"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText21->Wrap( -1 );
 	bSizer2->Add( m_staticText21, 0, wxALL|wxALIGN_CENTER_HORIZONTAL, 5 );
 
-	wxString m_choice2Choices[] = { _("Liniowa"), _("Nielioniwa"), _("Ortogonalna"), wxEmptyString, wxEmptyString };
+	wxString m_choice2Choices[] = { _("Liniowa"), _("Nielioniwa"), _("Ortogonalna") };
 	int m_choice2NChoices = sizeof( m_choice2Choices ) / sizeof( wxString );
 	m_choice2 = new wxChoice( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, m_choice2NChoices, m_choice2Choices, 0 );
 	m_choice2->SetSelection( 0 );
-	bSizer2->Add( m_choice2, 0, wxALL, 5 );
+	bSizer2->Add( m_choice2, 0, wxALL | wxALIGN_CENTER_HORIZONTAL, 5 );
 
-	WxButton2 = new wxButton(this, wxID_ANY, _("Kopiuj"), wxDefaultPosition, wxDefaultSize, 0);
-	bSizer2->Add(WxButton2, 0, wxALL, 5);
+
+	m_staticText22 = new wxStaticText(this, wxID_ANY, _("Pozycja ramki:"), wxDefaultPosition, wxDefaultSize, 0);
+	m_staticText22->Wrap(-1);
+	bSizer2->Add(m_staticText22, 0, wxALL | wxALIGN_CENTER_HORIZONTAL, 5);
+
+	m_slider2 = new wxSlider(this, wxID_ANY, 0, 0, 600, wxDefaultPosition, wxDefaultSize, wxSL_HORIZONTAL);
+	bSizer2->Add(m_slider2, 0, wxALL | wxEXPAND, 5);
+
+	m_slider3 = new wxSlider(this, wxID_ANY, 0, 0, 600, wxDefaultPosition, wxDefaultSize, wxSL_HORIZONTAL);
+	bSizer2->Add(m_slider3, 0, wxALL | wxEXPAND, 5);
+
 
 
 	bSizer1->Add( bSizer2, 0, wxALIGN_RIGHT, 5 );
@@ -116,7 +135,27 @@ MyFrame1::MyFrame1( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_menu11->Bind(wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( MyFrame1::OpenFromKeyboard ), this, m_menuItem4->GetId());
 	m_menu1->Bind(wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( MyFrame1::Save ), this, m_menuItem5->GetId());
 	m_menu1->Bind(wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler(MyFrame1::Copy), this, m_menuItem6->GetId());
+	m_slider2->Connect(wxEVT_SCROLL_TOP, wxScrollEventHandler(MyFrame1::ChangedX), NULL, this);
+	m_slider2->Connect(wxEVT_SCROLL_BOTTOM, wxScrollEventHandler(MyFrame1::ChangedX), NULL, this);
+	m_slider2->Connect(wxEVT_SCROLL_LINEUP, wxScrollEventHandler(MyFrame1::ChangedX), NULL, this);
+	m_slider2->Connect(wxEVT_SCROLL_LINEDOWN, wxScrollEventHandler(MyFrame1::ChangedX), NULL, this);
+	m_slider2->Connect(wxEVT_SCROLL_PAGEUP, wxScrollEventHandler(MyFrame1::ChangedX), NULL, this);
+	m_slider2->Connect(wxEVT_SCROLL_PAGEDOWN, wxScrollEventHandler(MyFrame1::ChangedX), NULL, this);
+	m_slider2->Connect(wxEVT_SCROLL_THUMBTRACK, wxScrollEventHandler(MyFrame1::ChangedX), NULL, this);
+	m_slider2->Connect(wxEVT_SCROLL_THUMBRELEASE, wxScrollEventHandler(MyFrame1::ChangedX), NULL, this);
+	m_slider2->Connect(wxEVT_SCROLL_CHANGED, wxScrollEventHandler(MyFrame1::ChangedX), NULL, this);
 
+	m_slider3->Connect(wxEVT_SCROLL_TOP, wxScrollEventHandler(MyFrame1::ChangedY), NULL, this);
+	m_slider3->Connect(wxEVT_SCROLL_BOTTOM, wxScrollEventHandler(MyFrame1::ChangedY), NULL, this);
+	m_slider3->Connect(wxEVT_SCROLL_LINEUP, wxScrollEventHandler(MyFrame1::ChangedY), NULL, this);
+	m_slider3->Connect(wxEVT_SCROLL_LINEDOWN, wxScrollEventHandler(MyFrame1::ChangedY), NULL, this);
+	m_slider3->Connect(wxEVT_SCROLL_PAGEUP, wxScrollEventHandler(MyFrame1::ChangedY), NULL, this);
+	m_slider3->Connect(wxEVT_SCROLL_PAGEDOWN, wxScrollEventHandler(MyFrame1::ChangedY), NULL, this);
+	m_slider3->Connect(wxEVT_SCROLL_THUMBTRACK, wxScrollEventHandler(MyFrame1::ChangedY), NULL, this);
+	m_slider3->Connect(wxEVT_SCROLL_THUMBRELEASE, wxScrollEventHandler(MyFrame1::ChangedY), NULL, this);
+	m_slider3->Connect(wxEVT_SCROLL_CHANGED, wxScrollEventHandler(MyFrame1::ChangedY), NULL, this);
+
+	m_choice3->Connect(wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler(MyFrame1::ChangePointStyle), NULL, this);
 }
 
 MyFrame1::~MyFrame1()

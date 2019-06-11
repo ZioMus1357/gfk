@@ -40,6 +40,7 @@ class ChartClass
 		/** @brief	The tr TODO */
 		Matrix tr;
 
+		Matrix infotr;
 		/** @brief	The chart color */
 		wxColor chartColor = wxColor(255,0,0);
 
@@ -91,6 +92,8 @@ class ChartClass
 		 **************************************************************************************************/
 
 		void DrawLine(wxDC * dc);
+
+		void DrawInfo(wxDC *dc);
        
     public:
 		Container data;

@@ -114,7 +114,6 @@ void GUIMyFrame1::Repaint()
 	m_buffer = wxBitmap(WxPanel->GetSize().x, WxPanel->GetSize().y);
 	wxBufferedDC MyDC(&__MyDC, m_buffer);
 
-	 //ChartClass MyChart(cfg);
 	 int w, h;
 	 WxPanel->GetSize(&w, &h);
 	 chart->Draw(&MyDC, w, h);
@@ -141,4 +140,20 @@ void GUIMyFrame1::Copy(wxCommandEvent &e)
 		wxTheClipboard->SetData(new wxBitmapDataObject(MyBitmap));
 		wxTheClipboard->Close();
 	}
+}
+
+void GUIMyFrame1::ChangedX(wxScrollEvent& event) 
+{
+	cfg->Set_dX(m_slider2->GetValue());
+	Repaint();
+}
+void GUIMyFrame1::ChangedY(wxScrollEvent& event)
+{
+	cfg->Set_dY(m_slider3->GetValue());
+	Repaint();
+
+}
+void GUIMyFrame1::ChangePointStyle(wxCommandEvent& event) {
+	cfg->PointStyle = m_choice3->GetSelection();
+	Repaint();
 }

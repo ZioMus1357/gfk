@@ -32,13 +32,14 @@ void ChartClass::Draw(wxDC *dc, int w, int h)
 	dc->SetPen(wxPen(chartColor));
 	dc->DrawRectangle(10, 10, w - 20, h - 20);
 	dc->SetPen(wxPen(pointColor));
-	dc->SetBrush(*wxTRANSPARENT_BRUSH);
+	dc->SetBrush(wxBrush(pointColor));
 	DrawPoints(dc);
 	dc->SetPen(wxPen(chartColor));
 	dc->SetClippingRegion(10, 10, w - 20, h - 20);
 	SetTransform();
 	DrawAxies(dc);
 	DrawLine(dc);
+	DrawInfo(dc);
 
 }
 
@@ -76,29 +77,8 @@ void ChartClass::SetTransform()
 	transform2.data[0][2] = cfg->Get_dX();
 	transform2.data[1][2] = cfg->Get_dY();
 
-	Matrix transform3; //rotacja
-	int Rx, Ry;
-	if (cfg->RotateScreenCenter()) 
-	{
-		Rx = width / 2;
-		Ry = height / 2;
-	}
-	else 
-	{
-		Vector temp;
-		temp.Set(0, 0);
-		temp = transform * temp;
-		Rx = temp.GetX();
-		Ry = temp.GetY();
-	}
-	transform3.data[0][0] = cos(-(cfg->Get_Alpha()) * acos(-1) / 180);
-	transform3.data[1][0] = sin(-(cfg->Get_Alpha()) * acos(-1) / 180);
-	transform3.data[0][1] = -transform3.data[1][0];
-	transform3.data[1][1] = transform3.data[0][0];
-	transform3.data[0][2] = Rx * (1 - transform3.data[0][0]) + Ry * transform3.data[1][0];
-	transform3.data[1][2] = -Rx * transform3.data[1][0] + Ry * (1 - transform3.data[0][0]);
-
-	tr = transform3 * transform2 * transform;
+	tr =  transform;
+	infotr = transform2;
 }
 
 void ChartClass::DrawAxies(wxDC *dc) 
@@ -125,10 +105,13 @@ void ChartClass::DrawAxies(wxDC *dc)
 void ChartClass::DrawPoints(wxDC *dc) 
 {
 	for (int i = 0; i < data.n; ++i) 
-	{
-		dc->DrawCircle(point2d(tr, data.Table[2 * i], data.Table[2 * i + 1]), pointSize * cfg->scale);
-		dc->DrawRotatedText(wxString::Format("%.2lf", data.Table[2 * i]), point2d(tr, data.Table[2 * i], data.Table[2 * i + 1]), cfg->Get_Alpha());
-		dc->DrawRotatedText(wxString::Format("%.2lf", data.Table[2 * i+1]), point2d(tr, data.Table[2 * i] + 1, data.Table[2 * i+1]), cfg->Get_Alpha());
+	{	
+		if(cfg->PointStyle)
+			dc->DrawRectangle(point2d(tr, data.Table[2 * i], data.Table[2 * i + 1]) + wxPoint(-pointSize * cfg->scale, -pointSize * cfg->scale), wxSize(2*pointSize * cfg->scale,2*pointSize * cfg->scale));
+		else
+			dc->DrawCircle(point2d(tr, data.Table[2 * i], data.Table[2 * i + 1]), pointSize * cfg->scale);
+		dc->DrawText(wxString::Format("%.2lf", data.Table[2 * i]), point2d(tr, data.Table[2 * i], data.Table[2 * i + 1]));
+		dc->DrawText(wxString::Format("%.2lf", data.Table[2 * i+1]), point2d(tr, data.Table[2 * i] + 1, data.Table[2 * i+1]));
 	}
 }
 void ChartClass::DrawLine(wxDC *dc) 
@@ -140,4 +123,18 @@ void ChartClass::DrawLine(wxDC *dc)
 		if (cfg->RegresionError == true)
 			dc->DrawLine(point2d(tr, data.Table[2 * i], data.eLin[i]), point2d(tr, data.Table[2 * i], 0));
 	}
+}
+void ChartClass::DrawInfo(wxDC *dc) {
+	double x1 = 10, y1 = 10;
+	Vector vector;
+	vector.Set(x1, y1);
+	vector = infotr * vector;
+	x1 = vector.GetX();
+	y1 = vector.GetY();
+	double x2 = x1 +150, y2 = y1 +60;
+	dc->SetBrush(wxBrush(wxColor(255,255,255)));
+	dc->DrawRectangle(x1,y1, x2,y2);
+	dc->SetPen(wxPen(wxColor(0, 0, 0)));
+	dc->DrawRectangle(x1, y1, x2, y2);
+	dc->DrawText(wxString::Format("Wspó³czynniki regresji:\na= %.2lf  b= %.2lf\nB³¹d regresji=%.2lf",data.parA,data.parB,data.errLin) ,wxPoint(x1 + 5,y1+5));
 }

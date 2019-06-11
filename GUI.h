@@ -53,6 +53,11 @@ class MyFrame1 : public wxFrame
 		wxMenu* m_menu1;
 		wxMenu* m_menu11;
 		wxButton* WxButton2;
+		wxStaticText* m_staticText22;
+		wxSlider* m_slider2;
+		wxSlider* m_slider3;
+		wxStaticText* m_staticText23;
+		wxChoice* m_choice3;
 
 		// Virtual event handlers, overide them in your derived class
 		virtual void MainFormClose( wxCloseEvent& event ) { event.Skip(); }
@@ -67,12 +72,16 @@ class MyFrame1 : public wxFrame
 		virtual void OpenFromKeyboard( wxCommandEvent& event ) { event.Skip(); }
 		virtual void Save( wxCommandEvent& event ) { event.Skip(); }
 		virtual void Copy(wxCommandEvent& event) { event.Skip(); }
+		virtual void ChangedX(wxScrollEvent& event) { event.Skip(); }
+		virtual void ChangedY(wxScrollEvent& event) { event.Skip(); }
+		virtual void ChangePointStyle(wxCommandEvent& event) { event.Skip(); }
+
 
 
 	public:
 		wxPanel* WxPanel;
 
-		MyFrame1( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("Regresja liniowa"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 777,497 ), long style = wxDEFAULT_FRAME_STYLE|wxTAB_TRAVERSAL );
+		MyFrame1( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("Regresja liniowa"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 800,600 ), long style = wxDEFAULT_FRAME_STYLE|wxTAB_TRAVERSAL );
 
 		~MyFrame1();
 

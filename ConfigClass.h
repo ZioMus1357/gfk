@@ -12,13 +12,6 @@ class ConfigClass
 	    /** @brief	Co-ordinates determinating rectangle */
 	    double x0, y0, x1, y1;     
 
-		/** @brief	kat obrotu wykresu */
-        double alpha;
-        
-		/** @brief	true	rotate around center of screen
-		*           false	obracamy around center of chart */
-        bool ScreenRotate; 
-		
 		/** @brief	The dX shift relavite to center of the screen */
 		double dX;
 		
@@ -28,8 +21,6 @@ class ConfigClass
 		/** @brief	Range of x variability  */
 		double x_start, x_stop; 
 
-        /** @brief	type of calculated function */
-        int F_type;
 
     public:
 
@@ -91,38 +82,6 @@ class ConfigClass
          * @returns	True if it succeeds, false if it fails.
          **************************************************************************************************/
 
-        bool RotateScreenCenter() { return ScreenRotate; };
-
-        /**********************************************************************************************//**
-         * @fn	void ConfigClass::SetRotateScreen(bool b)
-         *
-         * @brief	Sets rotate screen
-         *
-         * @param	b true	rotetes around center of screen 
-         * 			  false rotates around the center of chart
-         **************************************************************************************************/
-
-        void SetRotateScreen(bool b) { ScreenRotate = b; };
-
-        /**********************************************************************************************//**
-         * @fn	double ConfigClass::Get_Alpha()
-         *
-         * @brief	Gets the alpha
-         *
-         * @returns	The alpha.
-         **************************************************************************************************/
-
-        double Get_Alpha() { return alpha; };
-
-        /**********************************************************************************************//**
-         * @fn	void ConfigClass::Set_Alpha(int a)
-         *
-         * @brief	Sets an alpha
-         *
-         * @param	a	An int to process.
-         **************************************************************************************************/
-
-        void Set_Alpha(int a) { alpha = a; };
 
         /**********************************************************************************************//**
          * @fn	double ConfigClass::Get_dX()
@@ -244,47 +203,9 @@ class ConfigClass
 
         void   Set_y1(float v) { y1 = v; };
 
-        /**********************************************************************************************//**
-         * @fn	int ConfigClass::Get_F_type()
-         *
-         * @brief	Gets F_type
-         *
-         * @returns	The F_type.
-         **************************************************************************************************/
-
-        int  Get_F_type() { return F_type; };
-
-        /**********************************************************************************************//**
-         * @fn	void ConfigClass::Set_F_type(int i)
-         *
-         * @brief	Sets F_type
-         *
-         * @param	i	Zero-based index of the.
-         **************************************************************************************************/
-
-        void Set_F_type(int i) { F_type = i; };
-
-        /**********************************************************************************************//**
-         * @fn	void ConfigClass::Save(char *filename);
-         *
-         * @brief	Saves the given file
-         *
-         * @param [in,out]	filename	If non-null, the filename to save.
-         **************************************************************************************************/
-
-        void Save(char *filename);
-
-        /**********************************************************************************************//**
-         * @fn	void ConfigClass::Load(char *filename);
-         *
-         * @brief	Loads the given file
-         *
-         * @param [in,out]	filename	If non-null, the filename to load.
-         **************************************************************************************************/
-
-        void Load(char *filename);
 		double scale;
 		bool RegresionError;
+		int PointStyle;
 };
 
 #endif

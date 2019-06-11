@@ -37,6 +37,10 @@ class GUIMyFrame1 : public MyFrame1
 		void OpenFromKeyboard( wxCommandEvent& event );
 		void Save( wxCommandEvent& event );
 		void Copy(wxCommandEvent& event);
+		void ChangedX(wxScrollEvent& event);
+		void ChangedY(wxScrollEvent& event);
+		void ChangePointStyle(wxCommandEvent& event);
+
 
 	public:
 		/** Constructor */
