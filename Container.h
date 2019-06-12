@@ -2,21 +2,10 @@
 
 #include<iostream>
 
-/**********************************************************************************************//**
- * @class	Container
- *
- * @brief	A container.
- **************************************************************************************************/
-
 class Container {
 public:
-		/**********************************************************************************************//**
-	 * @fn	Container::Container();
-	 *
-	 * @brief	Constructor
-	 **************************************************************************************************/
-	Container();
 
+	Container();
 
 	/**********************************************************************************************//**
 	 * @fn	void Container::AddCords(double xCord, double yCord);
@@ -46,7 +35,7 @@ public:
 	 **************************************************************************************************/
 
 	void BladLiniowej();
-
+	
 	/**********************************************************************************************//**
 	 * @fn	void Container::RegresjaLiniowa();
 	 *
@@ -77,10 +66,10 @@ public:
 	/** @brief	An int to process with amount of points*/
 	int n = 0;
 	
-	/** @brief	Paramert a of Linear Regression */
+	/** @brief	Paramert a Linear Regression */
 	double parA;
 	
-	/** @brief	Parametr b of Linear Regression */
+	/** @brief	Parametr b Linear Regression */
 	double parB;
 	
 	/** @brief	Linear Regression error*/
@@ -101,6 +90,5 @@ public:
 	/** @brief	The y maximum */
 	double yMax;
 
-	/** @brief	Parametrers of Non-Linear Regression */
 	double * NLpar;
 };

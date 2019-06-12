@@ -1,7 +1,11 @@
 #include <wx/dc.h>
 #include <memory>
+#include <cmath>
+
 #include "ChartClass.h"
 #include "vecmat.h"
+
+
 
 ChartClass::ChartClass(std::shared_ptr<ConfigClass> c)
 {
@@ -21,31 +25,31 @@ void ChartClass::Set_Range()
 	 x_min=xmin;
 	 x_max=xmax;
 }
+
 void ChartClass::Draw(wxDC *dc, int w, int h)
 {
 	width = w - 20;
 	height = h - 20;
 	dc->SetBackground(wxBrush(wxColor(255, 255, 255)));
 	dc->Clear();
-
-	dc->SetPen(wxPen(wxColor(0, 0, 0)));
-	dc->SetBrush(wxBrush(chartColor));
+	dc->SetPen(wxPen(chartColor));
 	dc->DrawRectangle(10, 10, w - 20, h - 20);
-
-	dc->SetPen(wxPen(wxColor(255, 255, 255)));
-	dc->SetClippingRegion(10, 10, w - 20, h - 20);
-
 	dc->SetPen(wxPen(pointColor));
 	dc->SetBrush(wxBrush(pointColor));
 	DrawPoints(dc);
-
-	dc->SetPen(wxPen(wxColor(0, 0, 0)));
+	dc->SetPen(wxPen(chartColor));
+	dc->SetClippingRegion(10, 10, w - 20, h - 20);
 	SetTransform();
 	DrawAxies(dc);
+	if(cfg->type == 1)
+	{
 	DrawLine(dc);
 	DrawInfo(dc);
+	}
+	if(cfg->type == 2) DrawPolynomial(dc);
 
 }
+
 wxPoint ChartClass::point2d(Matrix t, double x1, double y1)
 {
 	Vector vector;
@@ -119,14 +123,30 @@ void ChartClass::DrawPoints(wxDC *dc)
 }
 void ChartClass::DrawLine(wxDC *dc) 
 {
-	data.RegresjaLiniowa();
-	data.BladLiniowej();
-	dc->DrawLine(point2d(tr, x_min * 1000* cfg->scale, data.parA*x_min * 1000* cfg->scale + data.parB), point2d(tr, x_max * 1000*cfg->scale, data.parA*x_max* 1000*cfg->scale + data.parB));
+	dc->DrawLine(point2d(tr, x_min, data.parA*x_min + data.parB), point2d(tr, x_max, data.parA*x_max + data.parB));
 	for (int i = 0; i < data.n; ++i) {
 		if (cfg->RegresionError == true)
 			dc->DrawLine(point2d(tr, data.Table[2 * i], data.eLin[i]), point2d(tr, data.Table[2 * i], 0));
 	}
 }
+
+void ChartClass::DrawPolynomial(wxDC *dc) 
+{
+	double x_1 = x_min, x_2, y_1, y_2;
+	while (x_1 <= x_max)
+	{
+		x_2 = x_1 + 1 / 100;
+		y_1 = y_2 = 0;
+		for(int i = 0; i < data.n; ++i)
+		{
+			y_1 += data.NLpar[i] * pow(x_1, i);
+			y_2 += data.NLpar[i] * pow(x_2, i);
+		}
+		dc->DrawLine(point2d(tr, x_1, y_1), point2d(tr, x_2, y_2));
+		x_1 = x_2;
+	}
+}
+
 void ChartClass::DrawInfo(wxDC *dc) {
 	double x1 = 10, y1 = 10;
 	Vector vector;
@@ -146,5 +166,5 @@ void ChartClass::DrawInfo(wxDC *dc) {
 	dc->DrawRectangle(x1,y1, w,h);
 	dc->SetPen(wxPen(wxColor(0, 0, 0)));
 	dc->DrawRectangle(x1, y1, w,h);
-	dc->DrawText(wxString::Format("Wspó³czynniki regresji:\na= %.2lf  b= %.2lf\nB³¹d regresji=%.2lf",data.parA,data.parB,data.errLin) ,wxPoint(x1 + 5,y1+5));
+	dc->DrawText(wxString::Format("Wspï¿½czynniki regresji:\na= %.2lf  b= %.2lf\nBï¿½ï¿½d regresji=%.2lf",data.parA,data.parB,data.errLin) ,wxPoint(x1 + 5,y1+5));
 }

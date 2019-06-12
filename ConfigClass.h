@@ -28,6 +28,7 @@ class ConfigClass
 		double x_start, x_stop; 
 
 
+
     public:
 
 		/** @brief	The scale */
@@ -206,6 +207,8 @@ class ConfigClass
          **************************************************************************************************/
 
         void Set_y1(float v) { y1 = v; };
+
+        int type;
 
 
 };

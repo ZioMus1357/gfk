@@ -43,7 +43,7 @@ class ChartClass
 		/** @brief	The infotr */
 		Matrix infotr;
 		/** @brief	The chart's color */
-		wxColor chartColor = wxColor(255,255,255);
+		wxColor chartColor = wxColor(255,0,0);
 
 		/** @brief	The point's color */
 		wxColor pointColor = wxColor(125, 125, 0);
@@ -104,6 +104,8 @@ class ChartClass
 		 **************************************************************************************************/
 
 		void DrawInfo(wxDC *dc);
+
+		void DrawPolynomial(wxDC * dc);
        
     public:
 		/** @brief	The data */

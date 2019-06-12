@@ -2,11 +2,11 @@
 #include <iostream>
 #include <fstream>
 #include <cmath>
-#include<vector>
+#include <vector>
 
 using namespace std;
 
-Container::Container() {
+Container::Container(){
 	Table = new double[1];
 	eLin = new double[1];
 	NLpar = new double[1];
@@ -39,45 +39,45 @@ void Container::BladLiniowej() {
 	errLin = sqrt(sumE / (n - 2.));
 }
 
-void Container::RegresjaNieLiniowa() {
+void Container::RegresjaNieLiniowa(){
 	int i, j, k, dn;
 	dn = n - 1;
 	delete[] NLpar;
 	NLpar = new double[dn + 1];
 
-	vector<double> X(2 * dn + 1);
-	for (i = 0; i < 2 * dn + 1; ++i) {
+	vector<double>X(2 *dn + 1);
+	for(i = 0; i < 2 * dn + 1; ++i){
 		X[i] = 0;
-		for (j = 0; j < n; ++j) {
+		for(j = 0; j < n; ++j){
 			X[i] = X[i] + pow(Table[2 * j], i);
 		}
 	}
 
-	vector<vector<double>> B(dn + 1,vector<double>(dn + 2));
-	for (i = 0; i <= dn; ++i) {
-		for (j = 0; j <= dn; ++j) {
-			B[i][j] = X[i + j];
+	vector<vector<double>>B(dn + 1,vector<double>(dn + 2));
+	for(i = 0; i <= dn; ++i){
+		for(j = 0; j <= dn; ++j){
+			B[i][j] = X[i+j];
 		}
 	}
 
-	vector<double> Y(dn + 1);
-	for (i = 0; i < dn + 1; ++i) {
+	vector<double>Y(dn + 1);
+	for(i = 0; i < dn + 1; ++i){
 		Y[i] = 0;
-		for (j = 0; j < n; ++j) {
+		for(j = 0; j < n; ++j){
 			Y[i] = Y[i] + pow(Table[2 * j], i) * Table[2 * j + 1];
 		}
 	}
 
-	for (i = 0; i <= dn; ++i) {
+	for(i = 0; i <= dn; ++i){
 		B[i][dn + 1] = Y[i];
 	}
 
 	dn = dn + 1;
 
-	for (i = 0; i < dn; ++i) {
-		for (k = i + 1; k < dn; ++k) {
-			if (B[i][i] < B[k][i]) {
-				for (j = 0; j <= dn; ++j) {
+	for(i = 0; i < dn; ++i){
+		for(k = i + 1; k < dn; ++k){
+			if(B[i][i] < B[k][i]){
+				for(j = 0; j <= dn; ++j){
 					double temp = B[i][j];
 					B[i][j] = B[k][j];
 					B[k][j] = temp;
@@ -85,18 +85,18 @@ void Container::RegresjaNieLiniowa() {
 			}
 		}
 	}
-	for (i = 0; i < dn - 1; ++i) {
-		for (k = i + 1; k < dn; ++k) {
-			double t = B[k][i] / B[i][i];
-			for (j = 0; j <= dn; ++j) {
-				B[k][j] = B[k][j] - t * B[i][j];
+	for(i = 0; i < dn - 1; ++i){
+		for(k = i + 1; k < dn; ++k){
+			double t = B[k][i]/B[i][i];
+			for(j = 0; j <= dn; ++j){
+				B[k][j] = B[k][j] - t *B[i][j];
 			}
 		}
 	}
-	for (i = dn - 1; i >= 0; --i) {
+	for(i = dn - 1; i >= 0; --i){
 		NLpar[i] = B[i][n];
-		for (j = 0; j < dn; j++) {
-			if (j != i) {
+		for(j = 0; j < dn; j++){
+			if(j != i){
 				NLpar[i] = NLpar[i] - B[i][j] * NLpar[j];
 			}
 		}
