@@ -3,6 +3,12 @@
 
 #include "GUIMyFrame1.h"
 
+/**********************************************************************************************//**
+ * @class	ConfigClass
+ *
+ * @brief	A configuration class.
+ **************************************************************************************************/
+
 class ConfigClass
 {
     private:
@@ -23,6 +29,13 @@ class ConfigClass
 
 
     public:
+
+		/** @brief	The scale */
+		double scale;
+		/** @brief	True to regresion error */
+		bool RegresionError;
+		/** @brief	The point style  1 - rectangle 0 - circle*/
+		int PointStyle;
 
         /**********************************************************************************************//**
          * @fn	ConfigClass::ConfigClass(GUIMyFrame1 *wnd);
@@ -73,15 +86,6 @@ class ConfigClass
          **************************************************************************************************/
 
         void   Set_x_stop(double v) { x_stop = v; };
-
-        /**********************************************************************************************//**
-         * @fn	bool ConfigClass::RotateScreenCenter()
-         *
-         * @brief	Determines if we can rotate screen center
-         *
-         * @returns	True if it succeeds, false if it fails.
-         **************************************************************************************************/
-
 
         /**********************************************************************************************//**
          * @fn	double ConfigClass::Get_dX()
@@ -201,11 +205,9 @@ class ConfigClass
          * @param	v	The value.
          **************************************************************************************************/
 
-        void   Set_y1(float v) { y1 = v; };
+        void Set_y1(float v) { y1 = v; };
 
-		double scale;
-		bool RegresionError;
-		int PointStyle;
+
 };
 
 #endif

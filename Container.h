@@ -2,6 +2,12 @@
 
 #include<iostream>
 
+/**********************************************************************************************//**
+ * @class	Container
+ *
+ * @brief	A container.
+ **************************************************************************************************/
+
 class Container {
 public:
 
@@ -56,10 +62,10 @@ public:
 	/** @brief	An int to process with amount of points*/
 	int n = 0;
 	
-	/** @brief	Paramert a Linear Regression */
+	/** @brief	Paramert a of Linear Regression */
 	double parA;
 	
-	/** @brief	Parametr b Linear Regression */
+	/** @brief	Parametr b of Linear Regression */
 	double parB;
 	
 	/** @brief	Linear Regression error*/

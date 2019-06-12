@@ -40,13 +40,15 @@ class ChartClass
 		/** @brief	The tr TODO */
 		Matrix tr;
 
+		/** @brief	The infotr */
 		Matrix infotr;
-		/** @brief	The chart color */
+		/** @brief	The chart's color */
 		wxColor chartColor = wxColor(255,0,0);
 
-		/** @brief	The point color */
+		/** @brief	The point's color */
 		wxColor pointColor = wxColor(125, 125, 0);
 
+		/** @brief	Size of the point */
 		double pointSize = 1;
 
         /**********************************************************************************************//**
@@ -93,9 +95,18 @@ class ChartClass
 
 		void DrawLine(wxDC * dc);
 
+		/**********************************************************************************************//**
+		 * @fn	void ChartClass::DrawInfo(wxDC *dc);
+		 *
+		 * @brief	Draw information
+		 *
+		 * @param [in,out]	dc	If non-null, the device-context.
+		 **************************************************************************************************/
+
 		void DrawInfo(wxDC *dc);
        
     public:
+		/** @brief	The data */
 		Container data;
 
         /**********************************************************************************************//**
@@ -175,6 +186,14 @@ class ChartClass
 		 **************************************************************************************************/
 
 		void SetPointColor(wxColor color) { pointColor = color; }
+
+		/**********************************************************************************************//**
+		 * @fn	double * ChartClass::GetPointSizePointer()
+		 *
+		 * @brief	Gets point size pointer
+		 *
+		 * @returns	The point size pointer.
+		 **************************************************************************************************/
 
 		double * GetPointSizePointer() { return &pointSize; }
  

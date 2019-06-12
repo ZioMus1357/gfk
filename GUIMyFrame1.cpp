@@ -85,7 +85,6 @@ void GUIMyFrame1::OpenFormFile( wxCommandEvent& event )
 
 void GUIMyFrame1::OpenFromKeyboard( wxCommandEvent& event )
 {
-// TODO: Implement OpenFromKeyboard
 	wxFrame *dataFrame = new DataWindow(this);
 	dataFrame->Show(true);
 	Repaint();
@@ -135,7 +134,7 @@ void GUIMyFrame1::Copy(wxCommandEvent &e)
 	MyBitmapDC.SelectObject(MyBitmap);
 	MyBitmapDC.Blit(0, 0, w, h, &MyDC, 0, 0);
 
-	if (wxTheClipboard->Open())  // #include <wx/clipbrd.h>
+	if (wxTheClipboard->Open()) 
 	{
 		wxTheClipboard->SetData(new wxBitmapDataObject(MyBitmap));
 		wxTheClipboard->Close();

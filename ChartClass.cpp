@@ -131,10 +131,17 @@ void ChartClass::DrawInfo(wxDC *dc) {
 	vector = infotr * vector;
 	x1 = vector.GetX();
 	y1 = vector.GetY();
-	double x2 = x1 +150, y2 = y1 +60;
+	double w = 160;
+	double h = 70;
+	if (x1 > 494) {
+		x1 = 494;
+	}
+	if (y1 > 461) {
+		y1 = 461;
+	}
 	dc->SetBrush(wxBrush(wxColor(255,255,255)));
-	dc->DrawRectangle(x1,y1, x2,y2);
+	dc->DrawRectangle(x1,y1, w,h);
 	dc->SetPen(wxPen(wxColor(0, 0, 0)));
-	dc->DrawRectangle(x1, y1, x2, y2);
+	dc->DrawRectangle(x1, y1, w,h);
 	dc->DrawText(wxString::Format("Wspó³czynniki regresji:\na= %.2lf  b= %.2lf\nB³¹d regresji=%.2lf",data.parA,data.parB,data.errLin) ,wxPoint(x1 + 5,y1+5));
 }
