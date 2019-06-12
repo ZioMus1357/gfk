@@ -43,7 +43,7 @@ class ChartClass
 		/** @brief	The infotr */
 		Matrix infotr;
 		/** @brief	The chart's color */
-		wxColor chartColor = wxColor(255,0,0);
+		wxColor chartColor = wxColor(255,255,255);
 
 		/** @brief	The point's color */
 		wxColor pointColor = wxColor(125, 125, 0);

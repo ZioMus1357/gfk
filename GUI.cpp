@@ -24,10 +24,10 @@ MyFrame1::MyFrame1( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	wxBoxSizer* bSizer2;
 	bSizer2 = new wxBoxSizer( wxVERTICAL );
 
-	m_button4 = new wxButton( this, wxID_ANY, _("Kolor Wykresu"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_button4 = new wxButton( this, wxID_ANY, _("Kolor T³a"), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer2->Add( m_button4, 0, wxALL | wxALIGN_CENTER_HORIZONTAL, 5 );
 
-	m_button5 = new wxButton( this, wxID_ANY, _("Kolor Punkt\u00F3w:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_button5 = new wxButton( this, wxID_ANY, _("Kolor Punkt\u00F3w"), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer2->Add( m_button5, 0, wxALL | wxALIGN_CENTER_HORIZONTAL, 5 );
 
 	m_staticText19 = new wxStaticText( this, wxID_ANY, _("Skala wykresu:"), wxDefaultPosition, wxDefaultSize, 0 );

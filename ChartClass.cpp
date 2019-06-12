@@ -22,27 +22,31 @@ void ChartClass::Set_Range()
 	 x_min=xmin;
 	 x_max=xmax;
 }
-
 void ChartClass::Draw(wxDC *dc, int w, int h)
 {
 	width = w - 20;
 	height = h - 20;
 	dc->SetBackground(wxBrush(wxColor(255, 255, 255)));
 	dc->Clear();
-	dc->SetPen(wxPen(chartColor));
+
+	dc->SetPen(wxPen(wxColor(0, 0, 0)));
+	dc->SetBrush(wxBrush(chartColor));
 	dc->DrawRectangle(10, 10, w - 20, h - 20);
+
+	dc->SetPen(wxPen(wxColor(255, 255, 255)));
+	dc->SetClippingRegion(10, 10, w - 20, h - 20);
+
 	dc->SetPen(wxPen(pointColor));
 	dc->SetBrush(wxBrush(pointColor));
 	DrawPoints(dc);
-	dc->SetPen(wxPen(chartColor));
-	dc->SetClippingRegion(10, 10, w - 20, h - 20);
+
+	dc->SetPen(wxPen(wxColor(0, 0, 0)));
 	SetTransform();
 	DrawAxies(dc);
 	DrawLine(dc);
 	DrawInfo(dc);
 
 }
-
 wxPoint ChartClass::point2d(Matrix t, double x1, double y1)
 {
 	Vector vector;
@@ -118,7 +122,7 @@ void ChartClass::DrawLine(wxDC *dc)
 {
 	data.RegresjaLiniowa();
 	data.BladLiniowej();
-	dc->DrawLine(point2d(tr, x_min, data.parA*x_min + data.parB), point2d(tr, x_max, data.parA*x_max + data.parB));
+	dc->DrawLine(point2d(tr, x_min * 1000* cfg->scale, data.parA*x_min * 1000* cfg->scale + data.parB), point2d(tr, x_max * 1000*cfg->scale, data.parA*x_max* 1000*cfg->scale + data.parB));
 	for (int i = 0; i < data.n; ++i) {
 		if (cfg->RegresionError == true)
 			dc->DrawLine(point2d(tr, data.Table[2 * i], data.eLin[i]), point2d(tr, data.Table[2 * i], 0));
