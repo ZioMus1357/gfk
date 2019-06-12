@@ -39,9 +39,9 @@ Harmonogram pracy:
 8. Implementacja zapisu do pliku oraz kopiowanie do schowka
 
 # Decyzja o wyborze narzędzi programistycznych
-Do realizacji projektu wybraliśmy biblioteke wxWidgets, ponieważ jest ona relatywnie łatwa oraz większość funkcji potrzebnych do realizacji projektu została napisana na zajęciach. Do kompilacji zostało użyte Microsoft Visual Studio. Zdecydowaliśmy się głownie na to środowisko ze względu na korzystanie z systemu operacyjnego Windows.
+Do realizacji projektu wybraliśmy bibliotekę wxWidgets, ponieważ jest ona relatywnie łatwa oraz większość funkcji potrzebnych do realizacji projektu została napisana na zajęciach. Do kompilacji zostało użyte Microsoft Visual Studio. Zdecydowaliśmy się głownie na to środowisko ze względu na korzystanie z systemu operacyjnego Windows.
 # Podział pracy i analiza czasowa
-Większość projektu zrobiliśmy wspólnie, zostawiają testowanie oraz poprawki na późniejszą date.Staraliśmy się postaępować według ustalonego harmonogramu pracy aby nie kompliwować pisania projektu.
+Większość projektu zrobiliśmy wspólnie, zostawiają testowanie oraz poprawki na późniejszą date.Staraliśmy się postaępować według ustalonego harmonogramu pracy aby nie komplikować pisania projektu.
 # Opracowanie i opis niezbędnych algorytmów
 
 # Kodowanie
