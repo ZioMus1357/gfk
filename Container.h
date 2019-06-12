@@ -10,6 +10,13 @@
 
 class Container {
 public:
+		/**********************************************************************************************//**
+	 * @fn	Container::Container();
+	 *
+	 * @brief	Constructor
+	 **************************************************************************************************/
+	Container();
+
 
 	/**********************************************************************************************//**
 	 * @fn	void Container::AddCords(double xCord, double yCord);
@@ -49,6 +56,14 @@ public:
 	void RegresjaLiniowa();
 
 	/**********************************************************************************************//**
+	 * @fn	void Container::RegresjaNieLiniowa();
+	 *
+	 * @brief	Regresja nieliniowa
+	 **************************************************************************************************/
+
+	void RegresjaNieLiniowa();
+
+	/**********************************************************************************************//**
 	 * @fn	Container::~Container();
 	 *
 	 * @brief	Destructor
@@ -85,4 +100,7 @@ public:
 
 	/** @brief	The y maximum */
 	double yMax;
+
+	/** @brief	Parametrers of Non-Linear Regression */
+	double * NLpar;
 };
