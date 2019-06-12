@@ -196,6 +196,7 @@ class ChartClass
 		 **************************************************************************************************/
 
 		double * GetPointSizePointer() { return &pointSize; }
+		void DrawPolynomial(wxDC*);
  
 };
 

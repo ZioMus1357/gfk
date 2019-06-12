@@ -68,7 +68,7 @@ void GUIMyFrame1::AddError( wxCommandEvent& event )
 
 void GUIMyFrame1::ChangeRegresionType( wxCommandEvent& event )
 {
-// TODO: Implement ChangeRegresionType
+	cfg->type = m_choice2->GetSelection();
 }
 
 void GUIMyFrame1::OpenFormFile( wxCommandEvent& event )

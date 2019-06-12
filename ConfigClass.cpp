@@ -18,6 +18,7 @@ ConfigClass::ConfigClass(GUIMyFrame1 *wnd)
  scale = 1;
  RegresionError = false;
  PointStyle = 0;
+ type = 0;
 }
 
 

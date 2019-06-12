@@ -61,7 +61,7 @@ MyFrame1::MyFrame1( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_staticText21->Wrap( -1 );
 	bSizer2->Add( m_staticText21, 0, wxALL|wxALIGN_CENTER_HORIZONTAL, 5 );
 
-	wxString m_choice2Choices[] = { _("Liniowa"), _("Nielioniwa"), _("Ortogonalna") };
+	wxString m_choice2Choices[] = { _("Liniowa"), _("Nielioniwa")};
 	int m_choice2NChoices = sizeof( m_choice2Choices ) / sizeof( wxString );
 	m_choice2 = new wxChoice( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, m_choice2NChoices, m_choice2Choices, 0 );
 	m_choice2->SetSelection( 0 );

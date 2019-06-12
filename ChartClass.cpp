@@ -42,8 +42,13 @@ void ChartClass::Draw(wxDC *dc, int w, int h)
 	dc->SetPen(wxPen(wxColor(0, 0, 0)));
 	SetTransform();
 	DrawAxies(dc);
-	DrawLine(dc);
-	DrawInfo(dc);
+	if (cfg->type == 0)
+	{
+		DrawLine(dc);
+		DrawInfo(dc);
+	}
+	else
+		DrawPolynomial(dc);
 
 }
 wxPoint ChartClass::point2d(Matrix t, double x1, double y1)
@@ -147,4 +152,21 @@ void ChartClass::DrawInfo(wxDC *dc) {
 	dc->SetPen(wxPen(wxColor(0, 0, 0)));
 	dc->DrawRectangle(x1, y1, w,h);
 	dc->DrawText(wxString::Format("Wspó³czynniki regresji:\na= %.2lf  b= %.2lf\nB³¹d regresji=%.2lf",data.parA,data.parB,data.errLin) ,wxPoint(x1 + 5,y1+5));
+}
+
+void ChartClass::DrawPolynomial(wxDC *dc)
+{
+	double x_1 = x_min, x_2, y_1, y_2;
+	while (x_1 <= x_max)
+	{
+		x_2 = x_1 + 0.1;
+		y_1 = y_2 = 0;
+		for (int i = 0; i < data.n; ++i)
+		{
+			y_1 += data.NLpar[i] * pow(x_1, i);
+			y_2 += data.NLpar[i] * pow(x_2, i);
+		}
+		dc->DrawLine(point2d(tr, x_1, y_1), point2d(tr, x_2, y_2));
+		x_1 = x_2;
+	}
 }
