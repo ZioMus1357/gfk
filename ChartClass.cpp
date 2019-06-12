@@ -1,6 +1,5 @@
 #include <wx/dc.h>
 #include <memory>
-
 #include "ChartClass.h"
 #include "vecmat.h"
 

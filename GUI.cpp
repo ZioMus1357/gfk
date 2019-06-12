@@ -54,7 +54,7 @@ MyFrame1::MyFrame1( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_choice3->SetSelection(0);
 	bSizer2->Add(m_choice3, 0, wxALL | wxALIGN_CENTER_HORIZONTAL, 5);
 
-	m_radioBtn3 = new wxRadioButton( this, wxID_ANY, _("S\u0142upki B\u0142\u0119d\u00F3w:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_radioBtn3 = new wxCheckBox( this, wxID_ANY, _("S\u0142upki B\u0142\u0119d\u00F3w:"), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer2->Add( m_radioBtn3, 0, wxALL|wxALIGN_CENTER_HORIZONTAL|wxEXPAND, 5 );
 
 	m_staticText21 = new wxStaticText( this, wxID_ANY, _("Typ Regresji:"), wxDefaultPosition, wxDefaultSize, 0 );
@@ -129,7 +129,7 @@ MyFrame1::MyFrame1( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_slider1->Connect( wxEVT_SCROLL_THUMBRELEASE, wxScrollEventHandler( MyFrame1::ChangeScale ), NULL, this );
 	m_slider1->Connect( wxEVT_SCROLL_CHANGED, wxScrollEventHandler( MyFrame1::ChangeScale ), NULL, this );
 	m_textCtrl9->Connect( wxEVT_COMMAND_TEXT_UPDATED, wxCommandEventHandler( MyFrame1::ChangePointSize ), NULL, this );
-	m_radioBtn3->Connect( wxEVT_COMMAND_RADIOBUTTON_SELECTED, wxCommandEventHandler( MyFrame1::AddError ), NULL, this );
+	m_radioBtn3->Connect(wxEVT_CHECKBOX, wxCommandEventHandler( MyFrame1::AddError ), NULL, this );
 	m_choice2->Connect( wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( MyFrame1::ChangeRegresionType ), NULL, this );
 	m_menu11->Bind(wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( MyFrame1::OpenFormFile ), this, m_menuItem3->GetId());
 	m_menu11->Bind(wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( MyFrame1::OpenFromKeyboard ), this, m_menuItem4->GetId());

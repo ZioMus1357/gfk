@@ -28,6 +28,7 @@
 #include <wx/sizer.h>
 #include <wx/menu.h>
 #include <wx/frame.h>
+#include <wx/checkbox.h>
 
 ///////////////////////////////////////////////////////////////////////////
 
@@ -46,7 +47,7 @@ class MyFrame1 : public wxFrame
 		wxSlider* m_slider1;
 		wxStaticText* m_staticText20;
 		wxTextCtrl* m_textCtrl9;
-		wxRadioButton* m_radioBtn3;
+		wxCheckBox* m_radioBtn3;
 		wxStaticText* m_staticText21;
 		wxChoice* m_choice2;
 		wxMenuBar* m_menubar1;

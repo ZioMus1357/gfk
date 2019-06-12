@@ -62,8 +62,7 @@ void GUIMyFrame1::ChangePointSize( wxCommandEvent& event )
 
 void GUIMyFrame1::AddError( wxCommandEvent& event )
 {
-	if (m_radioBtn3->IsEnabled())
-		cfg->RegresionError = true;
+	cfg->RegresionError = m_radioBtn3->IsChecked();
 	Repaint();
 }
 
