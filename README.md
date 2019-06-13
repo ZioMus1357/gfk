@@ -45,7 +45,7 @@ Większość projektu zrobiliśmy wspólnie, zostawiają testowanie oraz poprawk
 # Opracowanie i opis niezbędnych algorytmów
 ![equation](http://www.sciweavers.org/tex2img.php?eq=%24%24a%3D%5Cfrac%7B%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%28X_i-%5Coverline%7BX%7D%29%28Y_i-%5Coverline%7BY%7D%29%7D%7B%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%28X_i-%5Coverline%7BX%7D%29%5E2%7D%24%24&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=0)
 ![](http://www.sciweavers.org/tex2img.php?eq=%24%24a%3D%5Cfrac%7B%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%28X_i-%5Coverline%7BX%7D%29%28Y_i-%5Coverline%7BY%7D%29%7D%7B%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%28X_i-%5Coverline%7BX%7D%29%5E2%7D%24%24&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=)
-![](http://www.sciweavers.org/tex2img.php?eq=1%2Bsin%28mc%5E2%29&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=)
+![](https://latex.codecogs.com/png.latex?%24%24b%3D%5Coverline%7BY%7D-a%5Coverline%7BX%7D%24%24)
 h<sub>&theta;</sub>(x) = &theta;<sub>o</sub> x + &theta;<sub>1</sub>x
 
 # Kodowanie
