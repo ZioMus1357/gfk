@@ -86,6 +86,6 @@ Wykorzystaliśmy również dostarczoną przez prowadzącego na zajęciach klase 
 ## Testowanie
 W związku z tych że duża większość funkcji nie zwracała nic a funkcje które zwracały cokolwiek były zbyt proste aby wykonywać na nich testy jednostkowe, Nie zaimplementowaliśmy tego rodzaju testów. Dokomaliśmy testów UI prosząc kolege ze studiów o przetestowanie naszej aplikacji
 Uzyskaną krzywą regresji liniowej porównaliśmy z krzywą uzyskaną za pomocą programu LibreCalc dla takich samych danych wejściowych. Porównawcze zdjęcia znajdują się w repozytorium. Parametry regresji liniowej są sobie.  
-<img src="https://github.com/ZioMus1357/gfk/blob/master/wykresy/wykres_libre_office.png" alt="alt text" width="400" height="400">
-<img src="https://github.com/ZioMus1357/gfk/blob/master/wykresy/wykres_our.jpg" alt="alt text" width="400" height="400">  
+<img src="https://github.com/ZioMus1357/gfk/blob/master/wykresy/wykres_libre_office.png" alt="alt text" width="420" height="400">
+<img src="https://github.com/ZioMus1357/gfk/blob/master/wykresy/wykres_our.jpg" alt="alt text" width="420" height="400">  
 Po lewej stonie znjaduję się prosta regresji wygenerowana za pomocą programu LibreCalc wraz z parametrami, natomiast po prawej prosta wygenerowana przy pomocy naszego programu również z parametrami.
