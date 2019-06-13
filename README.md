@@ -56,7 +56,7 @@ Współcztnnik b jest różnicą średniej wartośći współrzędnych y oraz il
 Wzór na błąd standardowy oszacowania w regresji liniowe:
 
 Wyznaczamy wartości kolejnych niestandarzyowanych błędów predykcji w modelu regresji dla każdej pary współrzędnych x i y, obliczając różnice wartości współrzędnej y oraz sumy iloczynu współczynnika b i wartości współrzędnej x oraz współczynnika a.  
-![](https://latex.codecogs.com/png.latex?%24%24e_%7Bi%7D&plus;y-%28bx&plus;a%29%24%24)  
+![](https://latex.codecogs.com/png.latex?e_i%3Dy-%28bx&plus;a%29)  
 Błąd standardowy oszacowania w regresji liniowej jest równy pierwiastowy z sumy wszystkich wartości niestandarzyowanych błędów predykcji, podniesionych do kwadratu oraz podzielony przez ilość punktów zmniejszoną o ilość parametrów czyli 2.  
 ![](https://latex.codecogs.com/png.latex?%24%24S_%7Be%7D%3D%5Csqrt%7B%5Cfrac%7B%5Csum_%7Bi%3D1%7D%5E%7Bn%7De_%7Bi%7D%5E%7B2%7D%7D%7Bn-2%7D%7D%24%24)  
 
