@@ -86,5 +86,5 @@ Wykorzystaliśmy również dostarczoną przez prowadzącego na zajęciach klase 
 ## Testowanie
 W związku z tych że duża większość funkcji nie zwracała nic a funkcje które zwracały cokolwiek były zbyt proste aby wykonywać na nich testy jednostkowe, Nie zaimplementowaliśmy tego rodzaju testów. Dokomaliśmy testów UI prosząc kolege ze studiów o przetestowanie naszej aplikacji
 Uzyskaną krzywą regresji liniowej porównaliśmy z krzywą uzyskaną za pomocą programu LibreCalc dla takich samych danych wejściowych. Porównawcze zdjęcia znajdują się w repozytorium. Parametry regresji liniowej są sobie.  
-![](https://github.com/ZioMus1357/gfk/blob/master/62468294_2548873618480902_5637517258902208512_n.png) ![](https://github.com/ZioMus1357/gfk/blob/master/62418039_700481403742823_1419997972824850432_n.jpg)
+![](https://github.com/ZioMus1357/gfk/blob/master/wykresy/wykres_libre_office.png) ![](https://github.com/ZioMus1357/gfk/blob/master/wykresy/wykres_our.jpg)
 
