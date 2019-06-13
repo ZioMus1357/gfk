@@ -20,6 +20,7 @@ Użytkownik ma możliwośc za pomocą menu:
 1. Dodania punktu bezpośrednio z klawiatury
 2. Dodania punktów podając plik .txt którego schemat jest przedstawiony w pliku test.txt. 
 3. Zapisania wykresu do pliku .jpg
+4. Skopiowanie wykresu do schowka
 
 Korzystając z menu po prawej stronie można:
 1. Zmienić kolor wykresu, domyślnie jest ustawiony na biały,
@@ -83,5 +84,7 @@ Zamplimentowaliśmy następujące klasy:
 Dokumentacja dotycząca metod oraz zmiennych znajduję się plikach `.h`.
 Wykorzystaliśmy również dostarczoną przez prowadzącego na zajęciach klase `Vector` oraz `Matrix`.
 ## Testowanie
-W związku z tych że duża większość funkcji nie zwracała nic a funkcje które zwracały cokolwiek były zbyt proste aby wykonywać na nich testy jednostkowe, Nie zaimplementowaliśmy tego rodzaju testów. Dokomaliśmy testów UI prosząc kolege ze studiów o przetestowanie naszej aplikacji.
-## Wdrożenie, raport i wnioski
+W związku z tych że duża większość funkcji nie zwracała nic a funkcje które zwracały cokolwiek były zbyt proste aby wykonywać na nich testy jednostkowe, Nie zaimplementowaliśmy tego rodzaju testów. Dokomaliśmy testów UI prosząc kolege ze studiów o przetestowanie naszej aplikacji
+Uzyskaną krzywą regresji liniowej porównaliśmy z krzywą uzyskaną za pomocą programu LibreCalc dla takich samych danych wejściowych. Porównawcze zdjęcia znajdują się w repozytorium. Parametry regresji liniowej są sobie.
+![](https://github.com/ZioMus1357/gfk/blob/master/62468294_2548873618480902_5637517258902208512_n.png) ![](https://github.com/ZioMus1357/gfk/blob/master/62418039_700481403742823_1419997972824850432_n.jpg)
+
