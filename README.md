@@ -45,9 +45,9 @@ Większość projektu zrobiliśmy wspólnie, zostawiają testowanie oraz poprawk
 # Opracowanie i opis niezbędnych algorytmów
 Algorytm obliczania parametrów regresji liniowej:
 
-Wyznaczenie współczynników regresji liniowej sprowadza się do wyznaczenia śrdniej wartości współrzędnych x oraz y podanych punktów. Następnie w celu wyznacznia współczynnika a obliczamy sumę iloczynu różnic kolejnych wartośći x i średniej wartośći punktów x oraz kolejnych wartośći y i sredniej wartości punktów y, podzielonych przez kwadrat różnicy kolejnych punktów x średniej wartości punktów x.
-![](https://latex.codecogs.com/png.latex?%24%24a%3D%5Cfrac%7B%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%28X_i-%5Coverline%7BX%7D%29%28Y_i-%5Coverline%7BY%7D%29%7D%7B%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%28X_i-%5Coverline%7BX%7D%29%5E2%7D%24%24)
-Współcztnnik b jest różnicą średniej wartośći współrzędnych y oraz iloczynu współcztnnika a i średniej wartości współrzędnych x.
+Wyznaczenie współczynników regresji liniowej sprowadza się do wyznaczenia śrdniej wartości współrzędnych x oraz y podanych punktów. Następnie w celu wyznacznia współczynnika a obliczamy sumę iloczynu różnic kolejnych wartośći x i średniej wartośći punktów x oraz kolejnych wartośći y i sredniej wartości punktów y, podzielonych przez kwadrat różnicy kolejnych punktów x średniej wartości punktów x.  
+![](https://latex.codecogs.com/png.latex?%24%24a%3D%5Cfrac%7B%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%28X_i-%5Coverline%7BX%7D%29%28Y_i-%5Coverline%7BY%7D%29%7D%7B%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%28X_i-%5Coverline%7BX%7D%29%5E2%7D%24%24)  
+Współcztnnik b jest różnicą średniej wartośći współrzędnych y oraz iloczynu współcztnnika a i średniej wartości współrzędnych x.  
 ![](https://latex.codecogs.com/png.latex?%24%24b%3D%5Coverline%7BY%7D-a%5Coverline%7BX%7D%24%24)
 
 Wzór na błąd standardowy oszacowania w regresji liniowe:
