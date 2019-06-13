@@ -46,6 +46,29 @@ Do realizacji projektu wybraliśmy biblioteke wxWidgets, ponieważ jest ona rela
 ## Podział pracy i analiza czasowa
 Większość projektu zrobiliśmy wspólnie, zostawiają testowanie oraz poprawki na późniejszą date.Staraliśmy się postaępować według ustalonego harmonogramu pracy aby nie kompliwować pisania projektu. Ciężko jest określić określić dokładny czas przeznaczony na wykonanie projektu, w przybliżeniu napisanie wszystkiego zajeło nam ponad 24 godziny.
 ## Opracowanie i opis niezbędnych algorytmów
+Algorytm obliczania parametrów regresji liniowej:
+
+Wyznaczenie współczynników regresji liniowej sprowadza się do wyznaczenia śrdniej wartości współrzędnych x oraz y podanych punktów. Następnie w celu wyznacznia współczynnika a obliczamy sumę iloczynu różnic kolejnych wartośći x i średniej wartośći punktów x oraz kolejnych wartośći y i sredniej wartości punktów y, podzielonych przez kwadrat różnicy kolejnych punktów x średniej wartości punktów x.  
+![](https://latex.codecogs.com/png.latex?%24%24a%3D%5Cfrac%7B%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%28X_i-%5Coverline%7BX%7D%29%28Y_i-%5Coverline%7BY%7D%29%7D%7B%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%28X_i-%5Coverline%7BX%7D%29%5E2%7D%24%24)  
+Współcztnnik b jest różnicą średniej wartośći współrzędnych y oraz iloczynu współcztnnika a i średniej wartości współrzędnych x.  
+![](https://latex.codecogs.com/png.latex?%24%24b%3D%5Coverline%7BY%7D-a%5Coverline%7BX%7D%24%24)  
+
+Wzór na błąd standardowy oszacowania w regresji liniowe:
+
+Wyznaczamy wartości kolejnych niestandarzyowanych błędów predykcji w modelu regresji dla każdej pary współrzędnych x i y, obliczając różnice wartości współrzędnej y oraz sumy iloczynu współczynnika b i wartości współrzędnej x oraz współczynnika a.  
+![](https://latex.codecogs.com/png.latex?%24%24e_%7Bi%7D&plus;y-%28bx&plus;a%29%24%24)  
+Błąd standardowy oszacowania w regresji liniowej jest równy pierwiastowy z sumy wszystkich wartości niestandarzyowanych błędów predykcji, podniesionych do kwadratu oraz podzielony przez ilość punktów zmniejszoną o ilość parametrów czyli 2.  
+![](https://latex.codecogs.com/png.latex?%24%24S_%7Be%7D%3D%5Csqrt%7B%5Cfrac%7B%5Csum_%7Bi%3D1%7D%5E%7Bn%7De_%7Bi%7D%5E%7B2%7D%7D%7Bn-2%7D%7D%24%24)  
+
+Algorytm obliczania parametrów regresji nieliniowej:
+
+Obliczamy wartości sum współrzędnych x podniesionych do kolejnych potęg począwszy od 0 do 2m, gdzie m to stopien wielomianu, który chcemy uzyskać.  
+![](https://latex.codecogs.com/png.latex?%24%24%5Csum_%7Bi%3D1%7D%5E%7Bn%7Dx_%7Bi%7D%5Ek%24%24), dla k=0, 1, 2, ..., 2m  
+Następnie obliczamy sumy iloczynów wpsółrzędnych y oraz x podniesionych do kolejnych potęg od 0 do m.  
+![](https://latex.codecogs.com/png.latex?%24%24%5Csum_%7Bi%3D1%7D%5E%7Bn%7Dy_%7Bi%7Dx_%7Bi%7D%5Ek%24%24), dla k=0, 1, 2, ..., m  
+Z otrzymanych sum układamy równiania.  
+![](https://latex.codecogs.com/png.latex?%24%24a_%7B0%7Dn&plus;a_%7B1%7D%5Csum_%7Bi%3D1%7D%5E%7Bn%7Dx_%7Bi%7D&plus;a_%7B2%7D%5Csum_%7Bi%3D1%7D%5E%7Bn%7Dx_%7Bi%7D%5E2&plus;...&plus;a_%7Bm%7D%5Csum_%7Bi%3D1%7D%5E%7Bn%7Dx_%7Bi%7D%5E%7Bm%7D%3D%5Csum_%7Bi%3D1%7D%5E%7Bn%7Dy_%7Bi%7D%24%24%20%5C%5C%20%24%24a_%7B0%7D%5Csum_%7Bi%3D1%7D%5E%7Bn%7Dx_%7Bi%7D&plus;a_%7B1%7D%5Csum_%7Bi%3D1%7D%5E%7Bn%7Dx_%7Bi%7D%5E2&plus;a_%7B2%7D%5Csum_%7Bi%3D1%7D%5E%7Bn%7Dx_%7Bi%7D%5E3&plus;...&plus;a_%7Bm%7D%5Csum_%7Bi%3D1%7D%5E%7Bn%7Dx_%7Bi%7D%5E%7Bm&plus;1%7D%3D%5Csum_%7Bi%3D1%7D%5E%7Bn%7Dx_%7Bi%7Dy_%7Bi%7D%24%24%20%5C%5C%20%24%24a_%7B0%7D%5Csum_%7Bi%3D1%7D%5E%7Bn%7Dx_%7Bi%7D%5E2&plus;a_%7B1%7D%5Csum_%7Bi%3D1%7D%5E%7Bn%7Dx_%7Bi%7D%5E3&plus;a_%7B2%7D%5Csum_%7Bi%3D1%7D%5E%7Bn%7Dx_%7Bi%7D%5E4&plus;...&plus;a_%7Bm%7D%5Csum_%7Bi%3D1%7D%5E%7Bn%7Dx_%7Bi%7D%5E%7Bm&plus;2%7D%3D%5Csum_%7Bi%3D1%7D%5E%7Bn%7Dx_%7Bi%7D%5E2y_%7Bi%7D%24%24%20%5C%5C%20%5C%5C%20%24%24...%24%24%5C%5C%20%5C%5C%20%24%24a_%7B0%7D%5Csum_%7Bi%3D1%7D%5E%7Bn%7Dx_%7Bi%7D%5E%7Bm%7D&plus;a_%7B1%7D%5Csum_%7Bi%3D1%7D%5E%7Bn%7Dx_%7Bi%7D%5E%7Bm&plus;1%7D&plus;a_%7B2%7D%5Csum_%7Bi%3D1%7D%5E%7Bn%7Dx_%7Bi%7D%5E%7Bm&plus;2%7D&plus;...&plus;a_%7Bm%7D%5Csum_%7Bi%3D1%7D%5E%7Bn%7Dx_%7Bi%7D%5E%7B2m%7D%3D%5Csum_%7Bi%3D1%7D%5E%7Bn%7Dx_%7Bi%7D%5E%7Bm%7Dy_%7Bi%7D%24%24)  
+Mamy m+1 niewiadomych oraz tyle samo równań liniowych. Rozwiązujemy je metodą elimminacji Gaussa otrzumując wartości poszczególnych współczynników wilomianu interpolacyjnego.
 
 ## Kodowanie
 Zamplimentowaliśmy następujące klasy:
