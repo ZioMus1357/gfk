@@ -43,7 +43,7 @@ Do realizacji projektu wybraliśmy biblioteke wxWidgets, ponieważ jest ona rela
 # Podział pracy i analiza czasowa
 Większość projektu zrobiliśmy wspólnie, zostawiają testowanie oraz poprawki na późniejszą date.Staraliśmy się postaępować według ustalonego harmonogramu pracy aby nie kompliwować pisania projektu.
 # Opracowanie i opis niezbędnych algorytmów
-
+$$a=frac{\sum_{i=1}^{n}(X_i-\overline{X})(Y_i-\overline{Y})}{\sum_{i=1}^{n}(X_i-\overline{X})^2}$$
 # Kodowanie
 
 # Testowanie
